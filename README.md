@@ -124,11 +124,11 @@ just copying files into the same `results/` tree before running `statistics.py`.
 ## Status
 
 - [x] Repository scaffold, RealFramsticksInterface adapter, f0/f1 encoding stubs
-- [x] Gene (Levenshtein) and bounded graph dissimilarity
-- [x] Variant 1: NSGA-II baseline
-- [x] Variants 2-4: DE-NSGA-II gene / graph / hybrid crowding
-- [x] Variant 5: Adaptive DE-NSGA-II (sigmoidal schedule)
-- [x] Evaluation metrics + statistics module
-- [ ] Real `framspy` / `FramsticksLibCompetition` adapter (blocked on competition package access)
+- [] Gene (Levenshtein) and bounded graph dissimilarity
+- [] Variant 1: NSGA-II baseline
+- [] Variants 2-4: DE-NSGA-II gene / graph / hybrid crowding
+- [] Variant 5: Adaptive DE-NSGA-II (sigmoidal schedule)
+- [] Evaluation metrics + statistics module
+- [x] Real `framspy` / `FramsticksLibCompetition`
 - [ ] Phase 1-3 experiment execution on real Framsticks worlds
 - [ ] Report write-up
