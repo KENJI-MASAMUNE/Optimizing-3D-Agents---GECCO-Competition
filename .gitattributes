@@ -1,2 +1,17 @@
-# Auto detect text files and perform LF normalization
+# Normalize line endings for everyone on the team, regardless of OS/editor.
+# This is what those "LF will be replaced by CRLF" warnings were about --
+# harmless on their own, but worth pinning down explicitly on a team repo where
+# not everyone is on the same OS.
 * text=auto
+
+*.py text eol=lf
+*.md text eol=lf
+*.yaml text eol=lf
+*.yml text eol=lf
+*.sh text eol=lf
+
+*.dll binary
+*.so binary
+*.dylib binary
+*.png binary
+*.jpg binary

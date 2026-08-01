@@ -1,0 +1,63 @@
+# Default experiment configuration for the DE-NSGA-II Framsticks project.
+# See README.md for how to switch from the mock backend to the real Framsticks/framspy install.
+
+framsticks:
+  use_mock: true
+  # --- only needed when use_mock: false ---
+  framspy_path: null          # e.g. "C:/SalmaanP/.../framspy" -- directory containing
+                               # FramsticksLib.py / FramsticksLibCompetition.py directly
+  frams_dir: null              # e.g. "C:/SalmaanP/.../Framsticks55" -- the "-path" argument
+                               # FramsticksLib expects: directory containing frams-objects.dll/.so,
+                               # NOT the library file itself. No trailing slash.
+  lib_name: null                # optional; leave null to use the platform default
+                                 # (frams-objects.dll / .so / .dylib)
+  sim_files: "eval-allcriteria.sim;deterministic.sim;recording-body-coords.sim"
+  # -----------------------------------------
+  eval_budget: 100000          # competition rule: 100,000 fitness evaluations
+  time_budget_seconds: 3600    # competition rule: 1 hour wall-clock per run
+
+ga:
+  population_size: 100
+  n_generations: 60
+  crossover_prob: 0.7
+  mutation_prob: 0.3
+  tournament_size: 2
+  encodings: ["f0", "f1"]
+
+variants:
+  - nsga2_baseline
+  - de_nsga2_gene
+  - de_nsga2_graph
+  - de_nsga2_hybrid
+  - adaptive_de_nsga2
+
+hybrid_crowding:
+  gene_weight: 0.5   # tuned per Section 5.1 Variant 4; overridden per-encoding in Phase 2
+
+adaptive:
+  tau: 0.5            # sigmoid midpoint, as a fraction of n_generations
+  steepness: 10.0      # sigmoid steepness k
+
+tasks:
+  # Proxy tasks used for Phase 1 controlled experiments (Section 5.3), standing in for the
+  # 10 official competition (environment x fitness function) settings until competition
+  # worlds are released.
+  - name: straight_line_cog
+    description: "COG follows a straight 3D line; fitness = 1.0 / RMSE(COG, target_line)"
+  - name: sinusoidal_bounce
+    description: "COG follows 0.5 + 0.1*sin(t/100); fitness = 1.0 / sum_abs_diff"
+  - name: velocity_forward
+    description: "Maximise forward displacement of COG over the episode"
+  - name: jump_height
+    description: "Maximise peak vertical COG displacement"
+
+experiment:
+  n_repeats: 20              # competition rule: each setting repeated 20 times
+  n_repeats_smoke: 2          # used by --smoke flag for fast sanity runs
+  random_seed_base: 42
+  results_dir: "results"
+
+statistics:
+  alpha: 0.05
+  test: "kruskal-wallis"
+  posthoc: "dunn"
