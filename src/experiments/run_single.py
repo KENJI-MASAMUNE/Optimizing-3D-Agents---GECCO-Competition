@@ -44,8 +44,8 @@ def run_single(
     # state across runs unless explicitly reset (see interface.py's CRITICAL GOTCHA
     # docstring) -- without this, Phase 1/2's many repeats through one interface would
     # accumulate toward MAX_EVALUATIONS/MAX_TIME and could sys.exit() the whole batch
-    # partway through. MockFramsticksInterface has no such method, so this is a no-op
-    # for the mock backend.
+    # partway through. tests/fakes.py's FakeFramsticksInterface implements the same
+    # method for symmetry, so this reset happens for both.
     if hasattr(interface, "reset_evaluation_budget"):
         interface.reset_evaluation_budget()
 

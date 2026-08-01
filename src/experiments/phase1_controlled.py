@@ -1,9 +1,10 @@
 """
-Phase 1 -- controlled internal experiments (Section 5.3). Owner: Ntsako Sithole
+Phase 1 -- controlled internal experiments (Section 5.3).
 
 "Using publicly documented simulation parameters as proxies for competition settings, run
-all 5 variants x 2 encodings x 4 proxy tasks x 20 repeats." Uses the mock Framsticks
-backend by default (see README) until real competition worlds are available.
+all 5 variants x 2 encodings x 4 proxy tasks x 20 repeats." Runs against the real
+Framsticks/framspy install configured in configs/default_config.yaml (see README) until
+real competition worlds are available.
 """
 from __future__ import annotations
 

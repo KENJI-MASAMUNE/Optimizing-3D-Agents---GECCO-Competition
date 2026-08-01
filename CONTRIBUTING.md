@@ -16,8 +16,12 @@ questions," not "only person allowed to touch it" -- pair up at the module bound
 3. Before opening a PR:
    ```bash
    pytest tests/ -q
-   python scripts/run_phase1.py --smoke
    ```
+   Runs against a test-only fake (`tests/fakes.py`), so this works for everyone regardless
+   of whether you have the real Framsticks/framspy set up locally. If you *do* have it set
+   up, also run `python scripts/run_phase1.py --smoke` against your local config as an
+   extra real-world sanity check before opening the PR — but it's not required, since
+   reviewers without a local Framsticks install can't reproduce it anyway.
 4. Open a PR against `main`, tag the relevant module owner(s) as reviewer.
 5. Squash-merge once approved and CI (`.github/workflows/ci.yml`) is green.
 

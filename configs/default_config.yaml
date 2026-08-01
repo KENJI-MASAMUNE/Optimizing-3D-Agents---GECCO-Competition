@@ -2,15 +2,12 @@
 # See README.md for how to switch from the mock backend to the real Framsticks/framspy install.
 
 framsticks:
-  use_mock: true
-  # --- only needed when use_mock: false ---
-  framspy_path: null          # e.g. "C:/SalmaanP/.../framspy" -- directory containing
-                               # FramsticksLib.py / FramsticksLibCompetition.py directly
-  frams_dir: null              # e.g. "C:/SalmaanP/.../Framsticks55" -- the "-path" argument
-                               # FramsticksLib expects: directory containing frams-objects.dll/.so,
-                               # NOT the library file itself. No trailing slash.
+  framspy_path: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\framspy          # e.g. "C:/SalmaanP/.../framspy" -- directory containing
+                                                                                                                        # FramsticksLib.py / FramsticksLibCompetition.py directly
+  frams_dir: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\Framsticks55        # e.g. "C:/SalmaanP/.../Framsticks55" -- the "-path" argument
+                                                                                                                        # FramsticksLib expects: directory containing frams-objects.dll/.so,
   lib_name: null                # optional; leave null to use the platform default
-                                 # (frams-objects.dll / .so / .dylib)
+                                # (frams-objects.dll / .so / .dylib)
   sim_files: "eval-allcriteria.sim;deterministic.sim;recording-body-coords.sim"
   # -----------------------------------------
   eval_budget: 100000          # competition rule: 100,000 fitness evaluations

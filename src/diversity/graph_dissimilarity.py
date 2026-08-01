@@ -32,7 +32,7 @@ def genotype_to_graph(genotype: str, encoding: str) -> nx.Graph:
     """Build a small structural graph from a genotype string. Nodes represent body parts
     (or f1 structural symbols); edges represent physical/neural connections. This is a
     lightweight stand-in for the real Framsticks phenotype graph (which would come from
-    the simulator) -- see mock_framsticks.py docstring for why a mock exists at all.
+    the simulator).
     """
     g = nx.Graph()
 

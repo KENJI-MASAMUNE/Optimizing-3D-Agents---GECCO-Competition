@@ -27,6 +27,7 @@ jobs:
 
       - name: Run unit tests
         run: pytest tests/ -q
-
-      - name: Smoke-run Phase 1 (mock Framsticks backend)
-        run: python scripts/run_phase1.py --smoke
+        # Note: scripts/run_phase1.py --smoke is intentionally NOT run here -- it requires
+        # a real Framsticks/framspy install (licensed binary, can't be installed via pip or
+        # apt), which CI doesn't have. `pytest` above already covers engine.py's algorithm
+        # logic via tests/fakes.py's test-only double.

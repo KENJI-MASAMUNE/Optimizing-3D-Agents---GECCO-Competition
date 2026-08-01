@@ -11,17 +11,20 @@ This repository implements the algorithm variants and experimental pipeline desc
 **Adaptive DE-NSGA-II** — evaluated on centre-of-gravity (COG) trajectory-following tasks in
 the Framsticks simulation environment (Komosinski & Mensfelt, GECCO 2025).
 
-## Why there's a "mock" Framsticks backend
+## Framsticks backend
 
-The real Framsticks competition interface (`FramsticksLibCompetition`, via `framspy`) requires
-a licensed simulator binary that isn't available in this environment / on a generic CI runner.
-So that the codebase is runnable and testable by everyone on the team (and on GitHub Actions)
-without that binary, `src/framsticks_interface/mock_framsticks.py` implements the **same
-interface** (`evaluate`, `get_random_genotype`, `get_available_stimulators`, world config
-loading) but simulates genotypes and fitness synthetically. Swap `USE_MOCK = False` in
-`configs/default_config.yaml` once the real Framsticks/`framspy` install is available on a
-lab machine — no other code changes are required, because every algorithm module only talks
-to `FramsticksInterface`, never to the mock or the real library directly.
+`RealFramsticksInterface` (`src/framsticks_interface/interface.py`) wraps the real
+competition library (`FramsticksLibCompetition`, via `framspy`) and is the only production
+backend — there's no mock/fake shipped as a feature. Every algorithm/experiment module
+talks only to the abstract `FramsticksInterface`, never to framspy directly, so if the
+adapter ever needs to change, nothing else in `src/` does.
+
+The real simulator (a licensed binary) can't run in CI or be installed via pip, so
+`tests/fakes.py` has a small test-only double implementing the same interface, used
+exclusively by `pytest` to exercise `engine.py`'s actual NSGA-II logic — non-dominated
+sorting, crowding distance, the adaptive sigmoid schedule, budget bookkeeping — without
+needing the real simulator installed anywhere. It is not part of `src/`, is never imported
+by production code, and nothing it produces is a research result.
 
 ## Repository structure and ownership
 
@@ -32,8 +35,9 @@ cross-review and pairing are expected, especially at the module boundaries.
 ```
 src/
 ├── framsticks_interface/   # OWNER: Vanessa Rampedi
-│   ├── interface.py           Abstract FramsticksInterface + real-lib adapter stub
-│   ├── mock_framsticks.py     Mock simulator (genotypes, COG trajectories, fitness)
+│   ├── interface.py           Abstract FramsticksInterface + RealFramsticksInterface adapter
+│   ├── competition_lib.py     Our FramsticksLibCompetition subclass (task-specific fitness)
+│   ├── task_fitness.py        The four Phase 1 fitness functions, pure numpy (framspy-free)
 │   └── encodings.py           f0 / f1 genotype helpers, random genotype generators
 │
 ├── diversity/               # OWNER: Vanessa Rampedi (with Ntsako on graph measure)
@@ -68,9 +72,13 @@ git clone <this-repo-url>
 cd de-nsga2-framsticks
 python -m venv .venv && source .venv/bin/activate
 pip install -r requirements.txt
-pytest tests/ -q                       # sanity-check everything works (mock backend)
-python scripts/run_phase1.py --smoke   # quick smoke run: 2 variants x 1 task x 2 repeats
+pytest tests/ -q     # sanity-check the algorithm/diversity/crowding logic (no Framsticks needed)
 ```
+
+`pytest` works immediately for everyone — it runs against a small test-only double (see
+"Framsticks backend" above), not the real simulator. Actually running the evolutionary
+pipeline (`scripts/run_phase1.py` etc.) requires the real Framsticks + `framspy` set up
+locally first (next section) — there's no mock fallback for that anymore.
 
 ### Local Framsticks/framspy setup (each team member does this individually)
 
@@ -82,7 +90,6 @@ each team member needs their own local copy anyway. Both are already covered by
 
 ```yaml
 framsticks:
-  use_mock: false
   framspy_path: "/path/to/framspy"        # dir containing FramsticksLib.py directly
   frams_dir: "/path/to/Framsticks55"       # dir containing frams-objects.dll/.so/.dylib
   lib_name: null                            # leave null unless you renamed the library file
@@ -90,7 +97,7 @@ framsticks:
 ```
 
 Since these paths are personal to your machine, **don't commit your edited
-`configs/default_config.yaml`** with real paths filled in — either keep `use_mock: true`
+`configs/default_config.yaml`** with real paths filled in — either keep the paths `null`
 in what you commit and override locally, or add a `configs/local_config.yaml` (gitignored)
 and pass it via `--config configs/local_config.yaml` to the scripts below.
 
@@ -116,7 +123,7 @@ just copying files into the same `results/` tree before running `statistics.py`.
 
 ## Status
 
-- [x] Repository scaffold, mock Framsticks backend, f0/f1 encoding stubs
+- [x] Repository scaffold, RealFramsticksInterface adapter, f0/f1 encoding stubs
 - [x] Gene (Levenshtein) and bounded graph dissimilarity
 - [x] Variant 1: NSGA-II baseline
 - [x] Variants 2-4: DE-NSGA-II gene / graph / hybrid crowding

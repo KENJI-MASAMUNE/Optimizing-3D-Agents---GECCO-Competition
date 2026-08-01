@@ -82,10 +82,11 @@ class RunResult:
 def _pairwise_dissimilarity(interface: FramsticksInterface, genotypes: list[str], encoding: str,
                              measure: DiversityMeasure, gene_weight: float = 0.5) -> list[list[float]]:
     """Routes through `interface.pairwise_dissimilarity()` rather than calling
-    src/diversity/* directly, so that a real Framsticks backend uses Framsticks' OWN
+    src/diversity/* directly, so `RealFramsticksInterface` uses Framsticks' OWN
     dissimilarity() (GENE_LEVENSHTEIN / PHENE_STRUCT_GREEDY, per interface.py) instead of
-    our Python approximation -- the mock backend's implementation of the same method just
-    wraps src/diversity/* internally, so mock behaviour is unchanged."""
+    a Python approximation -- `tests/fakes.py`'s test double implements the same method by
+    wrapping src/diversity/* internally, purely so the test suite has something fast and
+    dependency-free to exercise this code path against."""
     if measure == DiversityMeasure.GENE:
         return interface.pairwise_dissimilarity(genotypes, encoding, "gene")
     if measure == DiversityMeasure.GRAPH:

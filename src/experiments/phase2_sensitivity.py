@@ -1,6 +1,5 @@
 """
-Phase 2 -- sensitivity analysis (Section 5.3). Owner: Ntsako Sithole (with Salmaan Patel
-on the adaptive-tau and hybrid-weight sweeps, per Work Plan Section 7: "Member 1 & 3").
+Phase 2 -- sensitivity analysis (Section 5.3). 
 
 "Vary key parameters: population size (50-200), tournament size, the adaptive switching
 threshold tau, and the weight between gene/graph in Variant 4."
