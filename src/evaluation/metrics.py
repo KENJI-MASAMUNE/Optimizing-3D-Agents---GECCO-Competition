@@ -1,5 +1,5 @@
 """
-Evaluation metrics, matching the table in Section 5.4 of the proposal. Owner: Ntsako Sithole
+Evaluation metrics, matching the table in Section 5.4 of the proposal.
 """
 from __future__ import annotations
 

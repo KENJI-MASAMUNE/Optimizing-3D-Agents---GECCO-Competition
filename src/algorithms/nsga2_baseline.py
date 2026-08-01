@@ -1,5 +1,5 @@
 """
-Variant 1 -- standard NSGA-II baseline (Section 5.1). Owner: Salmaan Patel
+Variant 1 -- standard NSGA-II baseline (Section 5.1)
 
 Objective-space crowding distance over (fitness, diversity_score). Reproduces the baseline
 setup from Komosinski and Mensfelt (2025) that DE-NSGA-II is compared against.

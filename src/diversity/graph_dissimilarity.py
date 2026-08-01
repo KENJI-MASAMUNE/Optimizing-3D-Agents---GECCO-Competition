@@ -1,5 +1,5 @@
 """
-Phenotypic (graph) dissimilarity measure. Owner: Ntsako Sithole
+Phenotypic (graph) dissimilarity measure
 
 Matches Section 2.4 / 4.4.2: "A graph-matching measure comparing 3D structural graphs of
 evolved bodies, accounting for vertex degree, neuron counts, geometric positions, and

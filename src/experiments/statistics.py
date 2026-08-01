@@ -1,5 +1,5 @@
 """
-Statistical analysis. Owner: Ntsako Sithole
+Statistical analysis.
 
 "Statistical significance will be assessed using the Kruskal-Wallis test followed by Dunn's
 post-hoc tests (alpha = 0.05), consistent with the methodology of Komosinski and Mensfelt

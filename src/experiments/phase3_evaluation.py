@@ -1,5 +1,5 @@
 """
-Phase 3 -- evaluation and testing (Section 5.3). Owner: Ntsako Sithole
+Phase 3 -- evaluation and testing (Section 5.3)
 
 "Select the best-performing variant and encoding per task type. Test in a clean environment
 using FramsticksLibCompetition." Also computes the Generalisation Score metric (Section 5.4)

@@ -1,5 +1,5 @@
 """
-Crowding distance mechanisms. Owner: Salmaan Patel
+Crowding distance mechanisms.
 
 - `objective_space_crowding_distance`: the standard NSGA-II crowding distance (Deb et al.,
   2002), used by Variant 1 (baseline).

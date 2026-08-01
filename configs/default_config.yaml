@@ -11,7 +11,7 @@ framsticks:
   sim_files: "eval-allcriteria.sim;deterministic.sim;recording-body-coords.sim"
   # -----------------------------------------
   eval_budget: 500          # competition rule: 100,000 fitness evaluations
-  time_budget_seconds: 120    # competition rule: 1 hour wall-clock per run
+  time_budget_seconds: 120    # competition rule: 1 hour wall-clock per run 3600
 
 ga:
   population_size: 10         # 100

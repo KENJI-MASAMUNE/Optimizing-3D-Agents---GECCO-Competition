@@ -1,5 +1,5 @@
 """
-Variant 5 -- Adaptive DE-NSGA-II (Section 5.1, novel contribution). Owner: Salmaan Patel
+Variant 5 -- Adaptive DE-NSGA-II 
 
 Implements "Adaptive Sigmoidal Selection": a continuous sigmoidal schedule that smoothly
 shifts crowding-distance weight from dissimilarity-based crowding (favouring structural

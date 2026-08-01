@@ -1,5 +1,5 @@
 """
-Variants 2-4 -- DE-NSGA-II Gene / Graph / Hybrid crowding (Section 5.1). Owner: Salmaan Patel
+Variants 2-4 -- DE-NSGA-II Gene / Graph / Hybrid crowding (Section 5.1)
 
 Each function is a thin configuration of the shared engine (engine.py) -- the only thing
 that changes between them is which dissimilarity measure feeds the crowding distance

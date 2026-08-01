@@ -1,6 +1,5 @@
 """
 Genetic dissimilarity measure: Levenshtein distance on genotype strings.
-Owner: Vanessa Rampedi
 
 Matches Section 2.4 / 4.4.2 of the proposal: "Levenshtein distance computed on genotype
 strings -- computationally efficient and encoding-agnostic." Used as the diversity metric

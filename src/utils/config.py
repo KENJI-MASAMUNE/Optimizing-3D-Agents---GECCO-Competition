@@ -1,6 +1,5 @@
 """
 Shared configuration loading and run bookkeeping utilities.
-Owner: all members (shared infrastructure).
 """
 from __future__ import annotations
 

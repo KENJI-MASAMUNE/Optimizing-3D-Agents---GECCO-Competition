@@ -1,5 +1,5 @@
 """
-Run a single (variant, encoding, task, repeat) configuration end-to-end. Owner: Ntsako Sithole
+Run a single (variant, encoding, task, repeat) configuration end-to-end.
 
 This is the atomic unit every phase script (phase1/2/3) calls repeatedly with different
 parameter combinations. Keeping it isolated makes it easy to parallelise later (e.g. with

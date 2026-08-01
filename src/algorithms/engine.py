@@ -1,5 +1,5 @@
 """
-Shared evolutionary engine underlying all five algorithm variants. Owner: Salmaan Patel
+Shared evolutionary engine underlying all five algorithm variants
 
 All variants (Section 5.1) share the same NSGA-II skeleton -- non-dominated sorting,
 elitist (mu+lambda) selection, binary tournament -- and differ ONLY in how crowding
