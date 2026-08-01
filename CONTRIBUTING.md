@@ -1,13 +1,8 @@
 # Contributing (Team Workflow)
 
-This is a 3-person COS700 group project, not an open-source project accepting outside
+This is a 3-person COS700 group project, 
 contributions -- this file just documents how *we* work together.
 
-## Module ownership
-
-See the table in `README.md`. Ownership means "primary reviewer and point of contact for
-questions," not "only person allowed to touch it" -- pair up at the module boundaries
-(e.g. `algorithms/` calling into `diversity/`).
 
 ## Workflow
 
