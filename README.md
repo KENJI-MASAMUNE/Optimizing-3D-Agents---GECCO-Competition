@@ -13,9 +13,8 @@ the Framsticks simulation environment (Komosinski & Mensfelt, GECCO 2025).
 
 ## Framsticks backend
 
-`RealFramsticksInterface` (`src/framsticks_interface/interface.py`) wraps the real
-competition library (`FramsticksLibCompetition`, via `framspy`) and is the only production
-backend — there's no mock/fake shipped as a feature. Every algorithm/experiment module
+`RealFramsticksInterface` (`src/framsticks_interface/interface.py`) wraps the
+competition library (`FramsticksLibCompetition`, via `framspy`). Every algorithm/experiment module
 talks only to the abstract `FramsticksInterface`, never to framspy directly, so if the
 adapter ever needs to change, nothing else in `src/` does.
 
