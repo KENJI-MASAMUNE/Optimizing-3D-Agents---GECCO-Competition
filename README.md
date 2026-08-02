@@ -78,7 +78,7 @@ pytest tests/ -q     # sanity-check the algorithm/diversity/crowding logic (no F
 `pytest` works immediately for everyone — it runs against a small test-only double (see
 "Framsticks backend" above), not the real simulator. Actually running the evolutionary
 pipeline (`scripts/run_phase1.py` etc.) requires the real Framsticks + `framspy` set up
-locally first (next section) — there's no mock fallback for that anymore.
+locally first (next section).
 
 ### Local Framsticks/framspy setup (each team member does this individually)
 
