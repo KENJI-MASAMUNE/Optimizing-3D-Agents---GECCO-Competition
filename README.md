@@ -13,9 +13,8 @@ the Framsticks simulation environment (Komosinski & Mensfelt, GECCO 2025).
 
 ## Framsticks backend
 
-`RealFramsticksInterface` (`src/framsticks_interface/interface.py`) wraps the real
-competition library (`FramsticksLibCompetition`, via `framspy`) and is the only production
-backend — there's no mock/fake shipped as a feature. Every algorithm/experiment module
+`RealFramsticksInterface` (`src/framsticks_interface/interface.py`) wraps the
+competition library (`FramsticksLibCompetition`, via `framspy`). Every algorithm/experiment module
 talks only to the abstract `FramsticksInterface`, never to framspy directly, so if the
 adapter ever needs to change, nothing else in `src/` does.
 
@@ -78,7 +77,7 @@ pytest tests/ -q     # sanity-check the algorithm/diversity/crowding logic (no F
 `pytest` works immediately for everyone — it runs against a small test-only double (see
 "Framsticks backend" above), not the real simulator. Actually running the evolutionary
 pipeline (`scripts/run_phase1.py` etc.) requires the real Framsticks + `framspy` set up
-locally first (next section) — there's no mock fallback for that anymore.
+locally first (next section).
 
 ### Local Framsticks/framspy setup (each team member does this individually)
 
