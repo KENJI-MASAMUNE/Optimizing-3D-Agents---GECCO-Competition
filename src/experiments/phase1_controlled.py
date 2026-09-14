@@ -23,7 +23,7 @@ def run_phase1(config_path: str | None = None, smoke: bool = False) -> list[Path
 
     engine_config = EngineConfig(
         population_size=config["ga"]["population_size"],
-        n_generations=config["ga"]["n_generations"] if not smoke else 5,
+        n_generations=config["ga"]["n_generations"] if not smoke else 20,  #5
         crossover_prob=config["ga"]["crossover_prob"],
         mutation_prob=config["ga"]["mutation_prob"],
         tournament_size=config["ga"]["tournament_size"],

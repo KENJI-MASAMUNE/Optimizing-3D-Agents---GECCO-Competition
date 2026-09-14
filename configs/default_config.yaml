@@ -10,15 +10,16 @@ framsticks:
                                 # (frams-objects.dll / .so / .dylib)
   sim_files: "eval-allcriteria.sim;deterministic.sim;recording-body-coords.sim"
   # -----------------------------------------
-  eval_budget: 500          # competition rule: 100,000 fitness evaluations
-  time_budget_seconds: 120    # competition rule: 1 hour wall-clock per run 3600
+  eval_budget: 100000          # competition rule: 100,000 fitness evaluations
+  time_budget_seconds: 3600    # competition rule: 1 hour wall-clock per run 3600
+  deterministic: true
 
 ga:
   population_size: 10         # 100
-  n_generations: 5           # 60
+  n_generations: 3           # 60
   crossover_prob: 0.7         # 0.7   
   mutation_prob: 0.3          # 0.3
-  tournament_size: 2          # 2
+  tournament_size: 3          # 2
   encodings: ["f0", "f1"]
 
 variants:
@@ -49,7 +50,7 @@ tasks:
     description: "Maximise peak vertical COG displacement"
 
 experiment:
-  n_repeats: 20              # competition rule: each setting repeated 20 times
+  n_repeats: 1              # competition rule: each setting repeated 20 times
   n_repeats_smoke: 2          # used by --smoke flag for fast sanity runs
   random_seed_base: 42
   results_dir: "results"

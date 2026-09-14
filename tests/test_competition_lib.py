@@ -12,6 +12,7 @@ import numpy as np
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from src.framsticks_interface.task_fitness import (
+    TARGET_LINE_DISTANCE,
     extract_cog_trajectory,
     fitness_jump_height,
     fitness_sinusoidal_bounce,
@@ -39,26 +40,36 @@ def test_extract_cog_trajectory_takes_first_part_from_verbose_format():
     np.testing.assert_array_equal(result, np.array([[0.0, 0.0, 0.0], [1.0, 1.0, 1.0]]))
 
 
-def test_fitness_functions_accept_verbose_format_transparently():
-    # The same episode, expressed in both formats, should give identical fitness.
-    cog_only = np.array([[0.0, 0.0, 0.0], [0.5, 0.5, 0.5], [1.0, 1.0, 1.0]])
-    verbose = [[list(row), [9.0, 9.0, 9.0]] for row in cog_only]  # COG + one dummy part per step
-
-    assert fitness_straight_line_cog(cog_only) == fitness_straight_line_cog(verbose)
-    assert fitness_velocity_forward(cog_only) == fitness_velocity_forward(verbose)
-    assert fitness_jump_height(cog_only) == fitness_jump_height(verbose)
-
-
-def test_straight_line_perfect_path_gives_max_fitness():
-    path = np.array([[0.0, 0.0, 0.0], [0.5, 0.5, 0.5], [1.0, 1.0, 1.0]])
-    fitness = fitness_straight_line_cog(path)
-    assert fitness == 1.0  # zero RMSE -> 1/(1+0) == 1.0
+def test_straight_line_perfect_follower_of_fixed_target_scores_max():
+    # The target line is FIXED (start + TARGET_LINE_DISTANCE along +x), not fit from the
+    # creature's own start/end -- so a genotype must actually travel toward that fixed
+    # goal to score well, not just move in *some* straight line.
+    start = np.array([2.0, 3.0, 0.5])
+    t = np.linspace(0, 1, 50)
+    perfect = start[None, :] + t[:, None] * np.array([TARGET_LINE_DISTANCE, 0.0, 0.0])[None, :]
+    assert fitness_straight_line_cog(perfect) == 1.0
 
 
-def test_straight_line_noisy_path_scores_lower():
-    perfect = np.array([[0.0, 0.0, 0.0], [0.5, 0.5, 0.5], [1.0, 1.0, 1.0]])
-    noisy = np.array([[0.0, 0.0, 0.0], [0.9, 0.1, 0.5], [1.0, 1.0, 1.0]])
-    assert fitness_straight_line_cog(noisy) < fitness_straight_line_cog(perfect)
+def test_straight_line_static_creature_scores_far_below_max():
+    # This is the regression test for the bug: a creature that never moves must NOT score
+    # the same as a creature that perfectly follows the target line. Previously this
+    # scored a false 1.0 because the old formula fit its "target" from the creature's own
+    # (identical) start and end points.
+    static = np.tile([2.0, 3.0, 0.5], (50, 1))
+    fitness = fitness_straight_line_cog(static)
+    assert fitness < 0.5, f"static creature scored {fitness}, expected well below max"
+
+
+def test_straight_line_wrong_direction_scores_below_perfect():
+    # Moving confidently in a straight line, but NOT toward the fixed target direction,
+    # must score lower than actually heading toward the target -- also previously false
+    # (the old formula only checked "is this internally consistent with itself", not
+    # "did you go where you were supposed to").
+    start = np.array([2.0, 3.0, 0.5])
+    t = np.linspace(0, 1, 50)
+    sideways = start[None, :] + t[:, None] * np.array([0.0, TARGET_LINE_DISTANCE, 0.0])[None, :]
+    perfect = start[None, :] + t[:, None] * np.array([TARGET_LINE_DISTANCE, 0.0, 0.0])[None, :]
+    assert fitness_straight_line_cog(sideways) < fitness_straight_line_cog(perfect)
 
 
 def test_sinusoidal_bounce_perfect_match():
@@ -66,6 +77,11 @@ def test_sinusoidal_bounce_perfect_match():
     z = 0.5 + 0.1 * np.sin(t / 100.0)
     path = np.stack([np.zeros_like(z), np.zeros_like(z), z], axis=1)
     assert fitness_sinusoidal_bounce(path) == 1.0
+
+
+def test_sinusoidal_bounce_static_creature_scores_below_max():
+    static = np.tile([0.0, 0.0, 0.5], (300, 1))  # sits exactly at the target's mean height
+    assert fitness_sinusoidal_bounce(static) < 1.0
 
 
 def test_velocity_forward_rewards_positive_x_displacement():
@@ -78,6 +94,29 @@ def test_velocity_forward_negative_for_backward_motion():
     assert fitness_velocity_forward(path) == -5.0
 
 
+def test_velocity_forward_static_creature_scores_zero():
+    static = np.tile([3.0, 3.0, 0.5], (20, 1))
+    assert fitness_velocity_forward(static) == 0.0
+
+
 def test_jump_height_finds_peak_above_start():
     path = np.array([[0.0, 0.0, 0.0], [0.0, 0.0, 2.0], [0.0, 0.0, 0.5]])
     assert fitness_jump_height(path) == 2.0
+
+
+def test_jump_height_static_creature_scores_zero():
+    static = np.tile([0.0, 0.0, 1.0], (20, 1))
+    assert fitness_jump_height(static) == 0.0
+
+
+def test_straight_line_two_point_trajectory_warns(capsys):
+    # Documents the separate short-trajectory edge case: even with the fixed-target fix,
+    # a 2-point trajectory is too short to be meaningful and should be flagged.
+    import src.framsticks_interface.task_fitness as tf
+    tf._warned_short_trajectory = False  # reset the once-only warning flag for this test
+
+    path = np.array([[0.0, 0.0, 0.0], [5.0, 3.0, 1.0]])
+    fitness_straight_line_cog(path)
+    captured = capsys.readouterr()
+    assert "WARNING" in captured.out
+    assert "2 recorded steps" in captured.out

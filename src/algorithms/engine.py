@@ -19,6 +19,7 @@ score" ambiguity flagged during proposal review.)
 from __future__ import annotations
 
 import random
+import time
 from dataclasses import dataclass, field
 from enum import Enum
 from typing import Callable
@@ -294,6 +295,8 @@ def run_evolution(
         weight = 1.0 / (1.0 + math.exp(k * (progress - tau)))
         return lambda: weight
 
+    run_start_time = time.perf_counter()
+
     for gen in range(config.n_generations):
         for ind in population:
             _evaluate(interface, ind, task, world_config)
@@ -323,6 +326,18 @@ def run_evolution(
             mean_fitness=sum(i.fitness for i in population) / len(population),
             mean_diversity=sum(i.diversity_score for i in population) / len(population),
         ))
+
+        elapsed = time.perf_counter() - run_start_time
+        avg_per_gen = elapsed / (gen + 1)
+        remaining_gens = config.n_generations - (gen + 1)
+        eta_seconds = avg_per_gen * remaining_gens
+
+        def _fmt(seconds: float) -> str:
+            return time.strftime("%H:%M:%S", time.gmtime(seconds))
+
+        print(f"[gen {gen + 1}/{config.n_generations}] evals={n_evaluations}  "
+              f"best={best_fitness_so_far:.4f}  mean={history[-1].mean_fitness:.4f}  "
+              f"elapsed={_fmt(elapsed)}  ETA={_fmt(eta_seconds)}", flush=True)
 
         if config.eval_budget and n_evaluations >= config.eval_budget:
             break

@@ -12,10 +12,12 @@ results/**/*.csv
 .vscode/
 .idea/
 framspy/
-Framsticks*/
+Framsticks55/
 configs/local_config.yaml
 *.results
 *.dll
 *.so
 *.dylib
 *.sim.bak
+configs/_energy0_sweep/
+claude.md

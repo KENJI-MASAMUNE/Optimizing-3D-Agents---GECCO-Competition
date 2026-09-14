@@ -26,7 +26,9 @@ jobs:
           pip install -r requirements.txt
 
       - name: Run unit tests
-        run: pytest tests/ -q
+        run: |
+          export PYTHONPATH="${PYTHONPATH}:${GITHUB_WORKSPACE}"
+          pytest tests/ -q
         # Note: scripts/run_phase1.py --smoke is intentionally NOT run here -- it requires
         # a real Framsticks/framspy install (licensed binary, can't be installed via pip or
         # apt), which CI doesn't have. `pytest` above already covers engine.py's algorithm
