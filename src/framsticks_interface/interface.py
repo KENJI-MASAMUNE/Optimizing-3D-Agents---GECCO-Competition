@@ -341,7 +341,7 @@ class RealFramsticksInterface(FramsticksInterface):
         return self._lib.getSimplest(self._frams_format(encoding))
 
     def mutate(self, genotype: str, encoding: str) -> str:
-        return self.lib.mutate([genotype])[0]
+        return self._lib.mutate([genotype])[0]
 
     def crossover(self, g1: str, g2: str, encoding: str) -> tuple[str, str]:
         return self._lib.crossOver(g1, g2), self._lib.crossOver(g1, g2)
@@ -442,11 +442,11 @@ class RealFramsticksInterface(FramsticksInterface):
             return EvaluationResult(fitness=float("nan"), cog_trajectory=trajectory,
                                     n_parts=int(n_parts or 0), is_valid=False, raw=data)
         return EvaluationResult(
-            fitness=float(fitness) if is_valid else 0.0,
-            cog_trajectory=list(extras.get("cog_trajectory", [])),
-            n_parts=int(extras.get("n_parts", 0) or 0),
-            is_valid=is_valid,
-            raw=extras.get("raw", {}),
+            fitness=float(fitness),
+            cog_trajectory=trajectory,
+            n_parts=int(n_parts or 0),
+            is_valid=True,
+            raw=data,
         )
 
     def finalize_submission(self) -> None:
