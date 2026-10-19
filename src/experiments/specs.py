@@ -267,6 +267,9 @@ def build_phase3_specs(config: dict, selection: dict[str, dict] | None = None,
                      control (so "is the winner still better in new worlds?" is testable).
       all_variants:  every variant in phase3.variants (default: the top-level `variants`
                      list) x all encodings (full comparison + competition-normalised score).
+    include_best_per_task: with all_variants, also run each task's Phase 1 winner when it
+    is not already in that list. Same output names, so a winner that is already scheduled
+    is not run twice.
     In best_per_task mode the organisers' Simple EA (same encoding) is added as a second
     control when it is listed in `variants`, so every setting has a Simple EA = 0 reference.
     """
@@ -279,11 +282,13 @@ def build_phase3_specs(config: dict, selection: dict[str, dict] | None = None,
         settings, n_repeats = settings[:2], 1
 
     seed_base = exp["random_seed_base"] + PHASE_SEED_OFFSET[3]
+    want_winners = mode != "all_variants" or p3.get("include_best_per_task", False)
     specs: list[RunSpec] = []
     for s in settings:
+        combos: list[tuple[str, str]] = []
         if mode == "all_variants":
-            combos = [(v, e) for v in (p3.get("variants") or config["variants"]) for e in config["ga"]["encodings"]]
-        else:
+            combos.extend((v, e) for v in (p3.get("variants") or config["variants"]) for e in config["ga"]["encodings"])
+        if want_winners:
             if smoke and (not selection or s.task not in selection):
                 selection = dict(selection or {})
                 selection[s.task] = {"variant": "de_nsga2_gene", "encoding": "f1"}  # smoke placeholder
@@ -291,14 +296,19 @@ def build_phase3_specs(config: dict, selection: dict[str, dict] | None = None,
                 raise ValueError(
                     f"Phase 3 (best_per_task) needs a Phase 1 selection for task '{s.task}'. "
                     "Run `python -m src.experiments.cli phase3-select` after Phase 1, or set "
-                    "phase3.mode: all_variants.")
+                    "phase3.include_best_per_task: false.")
             chosen = selection[s.task]
-            combos = [(chosen["variant"], chosen["encoding"])]
-            if chosen["variant"] != "nsga2_baseline":
-                combos.append(("nsga2_baseline", chosen["encoding"]))
-            if "simple_ea" in config["variants"]:
-                combos.append(("simple_ea", chosen["encoding"]))
+            combos.append((chosen["variant"], chosen["encoding"]))
+            if mode != "all_variants":
+                if chosen["variant"] != "nsga2_baseline":
+                    combos.append(("nsga2_baseline", chosen["encoding"]))
+                if "simple_ea" in config["variants"]:
+                    combos.append(("simple_ea", chosen["encoding"]))
+        seen: set[tuple[str, str]] = set()
         for variant, encoding in combos:
+            if (variant, encoding) in seen:
+                continue
+            seen.add((variant, encoding))
             ov = _tuned_overrides(tuned, variant, encoding) if p3.get("use_phase2_tuning", True) else ()
             for r in range(n_repeats):
                 specs.append(RunSpec(phase=3, variant=variant, encoding=encoding, task=s.task,
