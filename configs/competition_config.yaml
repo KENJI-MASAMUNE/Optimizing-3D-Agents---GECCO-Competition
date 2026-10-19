@@ -90,11 +90,12 @@ phase2:
   - f1
 phase3:
   worlds_file: null
+  # Submission rehearsal: Adaptive in every setting, against standard NSGA-II and the
+  # organisers' Simple EA. best_per_task remains available as the per-task side analysis.
   mode: all_variants
-  # all_variants runs these (Phase 1 ranking: adaptive & baseline best, gene = DE-NSGA-II
-  # reference, graph/hybrid dropped: worst and 4x slower on f1); remove the key to run all.
-  variants: [adaptive_de_nsga2, nsga2_baseline, de_nsga2_gene, simple_ea]
-  use_phase2_tuning: false
+  variants: [adaptive_de_nsga2, nsga2_baseline, simple_ea]
+  include_best_per_task: true  # also run a Phase 1 winner that is not already in variants
+  use_phase2_tuning: true      # Adaptive uses the tau chosen in Phase 2
   n_repeats: 20
 statistics:
   alpha: 0.05

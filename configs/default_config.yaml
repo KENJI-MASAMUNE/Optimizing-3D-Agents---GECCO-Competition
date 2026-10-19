@@ -91,10 +91,12 @@ phase2:
 
 phase3:
   worlds_file: null            # null = configs/worlds/phase3_worlds.yaml
-  mode: best_per_task          # proposal: Phase 1 winner per task + NSGA-II and Simple EA controls
-  # used only with mode: all_variants
-  variants: [adaptive_de_nsga2, nsga2_baseline, de_nsga2_gene, simple_ea]
-  use_phase2_tuning: false
+  # Submission rehearsal: Adaptive in every setting, against standard NSGA-II and the
+  # organisers' Simple EA. best_per_task remains available as the per-task side analysis.
+  mode: all_variants
+  variants: [adaptive_de_nsga2, nsga2_baseline, simple_ea]
+  include_best_per_task: true  # also run a Phase 1 winner that is not already in variants
+  use_phase2_tuning: true      # Adaptive uses the tau chosen in Phase 2
   n_repeats: 20
 
 statistics:
