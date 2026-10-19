@@ -1,47 +1,71 @@
-"""
-Project-specific subclass of the competition's FramsticksLibCompetition.
+"""Project-specific `FramsticksLibCompetition` subclass.
 
-FramsticksLibCompetition gives us evaluation-budget bookkeeping
-(MAX_EVALUATIONS / MAX_TIME enforcement) and result logging for free -- but its own
-`_evaluate_path` only implements three toy TEST_FUNCTION examples (distance between
-birth/death COG, etc.), not the actual COG trajectory-following fitness functions our
-proposal targets (Section 2.2 / 5.3's four proxy tasks). This subclass overrides
-`_evaluate_path` to compute OUR fitness definitions (task_fitness.py) from the COG
-body-recording path, while keeping all of FramsticksLibCompetition's budget/logging
-machinery completely intact.
-
-This module requires `framspy_path` to already be on `sys.path` (RealFramsticksInterface
-in interface.py does that) -- it is NOT importable without the real framspy checked out,
-by design. The pure fitness math it delegates to (task_fitness.py) has no such dependency
-and is unit-tested independently in tests/test_competition_lib.py.
-
-IMPORTANT: `self._lib.end()` (inherited, unmodified) calls `sys.exit()`. It must be called
-EXACTLY ONCE, at the very end of a real competition submission run -- NEVER inside a loop
-that does many repeats/variants in one process (i.e. never during Phase 1/2 experiments).
-See the warning in RealFramsticksInterface (interface.py).
+Overrides only `_evaluate_path` (and a thin `_evaluate_single_genotype` stash of the
+body recording) so the competition library's evaluation-budget / logging machinery stays
+untouched. Fitness math lives in `task_fitness.py`.
 """
 from __future__ import annotations
 
-import numpy as np
-from FramsticksLibCompetition import FramsticksLibCompetition  # requires framspy_path on sys.path
+from time import perf_counter
 
-from src.framsticks_interface.task_fitness import TASK_FITNESS_FUNCTIONS
+from FramsticksLibCompetition import FramsticksLibCompetition
+
+from src.framsticks_interface.task_fitness import extract_cog_trajectory, fitness_for_task
 
 
 class ProjectFramsticksLibCompetition(FramsticksLibCompetition):
-    """`current_task` must be set (by RealFramsticksInterface) before each `evaluate()`
-    call, since `_evaluate_path` only receives the path array, not the task name."""
+    """Same interface as `FramsticksLibCompetition`, with Phase 1 / competition tasks."""
 
-    SIMPLE_FITNESS_FORMAT = False  # we want the full result dict (numparts etc.), not just a float
-    COMPETITOR_ID = "DENSGA2Team"  # TODO: replace with your actual competition team/user ID
-
+    SIMPLE_FITNESS_FORMAT = True
     current_task: str = "straight_line_cog"
 
+    def __init__(self, frams_path, frams_lib_name, sim_settings_files):
+        super().__init__(frams_path, frams_lib_name, sim_settings_files)
+        self.current_task = "straight_line_cog"
+        self.last_eval: dict = {
+            "cog_trajectory": [],
+            "n_parts": 0,
+            "raw": {},
+        }
+
     def _evaluate_path(self, path):
-        path = np.array(path)
-        fn = TASK_FITNESS_FUNCTIONS.get(self.current_task)
-        if fn is None:
-            raise ValueError(
-                f"Unknown task '{self.current_task}'. Known tasks: {list(TASK_FITNESS_FUNCTIONS)}"
-            )
-        return fn(path)
+        return fitness_for_task(self.current_task, path)
+
+    def _evaluate_single_genotype(self, genotype):
+        """Parent implementation plus stash of COG trajectory / numparts for EvaluationResult."""
+        self._evaluation_count += 1
+        if (
+            self._evaluation_count > self.MAX_EVALUATIONS
+            or perf_counter() - self._time0 - self._evaluation_time > self.MAX_TIME
+        ):
+            print("The allowed time or the maximum number of evaluations exceeded")
+            self.end()
+
+        result = super(FramsticksLibCompetition, self).evaluate([genotype])
+        valid_result = result[0]["evaluations"] is not None
+        bodyrecording = []
+        n_parts = 0
+        fitness = None
+        if valid_result:
+            data = result[0]["evaluations"].get("", {})
+            bodyrecording = data.get("data->bodyrecording", [])
+            n_parts = int(data.get("numparts", 0) or 0)
+            fitness = self._evaluate_path(bodyrecording)
+
+        cog = extract_cog_trajectory(bodyrecording) if bodyrecording else extract_cog_trajectory([])
+        self.last_eval = {
+            "cog_trajectory": [tuple(row) for row in cog.tolist()],
+            "n_parts": n_parts,
+            "raw": result[0],
+        }
+
+        if fitness is not None and (self._best_fitness is None or self._best_fitness < fitness):
+            self._best_fitness = fitness
+            self._best_solution = genotype
+
+        if self.SIMPLE_FITNESS_FORMAT:
+            return fitness
+
+        if valid_result:
+            result[0]["evaluations"][""][self.FITNESS_DICT_KEY] = fitness
+        return result[0]
