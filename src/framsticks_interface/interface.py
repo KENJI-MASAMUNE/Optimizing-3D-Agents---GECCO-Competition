@@ -14,7 +14,7 @@ from __future__ import annotations
 import sys
 from abc import ABC, abstractmethod
 from pathlib import Path
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from typing import Any
 
 
