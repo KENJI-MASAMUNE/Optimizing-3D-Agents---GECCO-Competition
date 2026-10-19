@@ -6,11 +6,35 @@ machine. `extract_cog_trajectory` normalises both body-recording layouts that
 """
 from __future__ import annotations
 
+import math
 from collections.abc import Callable, Sequence
 
 import numpy as np
 
 ArrayLike = Sequence | np.ndarray
+
+# Fixed distance (world units) the desired straight-line path travels along the target heading.
+# A stationary creature is meaningfully far from this target and scores low.
+TARGET_LINE_DISTANCE = 10.0
+
+# Once-only flag so a short body recording warns on the first occurrence in a process.
+_warned_short_trajectory = False
+
+
+def _warn_if_degenerate(path: np.ndarray, task: str) -> None:
+    """Warn once when a trajectory has fewer than 3 recorded steps.
+
+    A 2-point path is too short for the RMSE and displacement scores to mean anything.
+    """
+    global _warned_short_trajectory
+    n = len(path)
+    if n >= 3 or _warned_short_trajectory:
+        return
+    _warned_short_trajectory = True
+    print(
+        f"WARNING: {task} received only {n} recorded steps; "
+        "a trajectory this short is too short to be meaningful."
+    )
 
 
 def extract_cog_trajectory(raw: ArrayLike) -> np.ndarray:
@@ -152,9 +176,9 @@ TASK_FITNESS_FUNCTIONS = {
 def fitness_for_task(task: str, path: ArrayLike) -> float:
     """Dispatch a body-recording path to the named Phase 1 fitness function."""
     try:
-        fn = FITNESS_FUNCTIONS[task]
+        fn = TASK_FITNESS_FUNCTIONS[task]
     except KeyError as exc:
         raise ValueError(
-            f"Unknown task '{task}'. Options: {sorted(FITNESS_FUNCTIONS)}"
+            f"Unknown task '{task}'. Options: {sorted(TASK_FITNESS_FUNCTIONS)}"
         ) from exc
     return fn(path)
