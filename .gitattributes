@@ -9,6 +9,8 @@
 *.yaml text eol=lf
 *.yml text eol=lf
 *.sh text eol=lf
+*.pbs text eol=lf
+*.sim text eol=lf
 
 *.dll binary
 *.so binary

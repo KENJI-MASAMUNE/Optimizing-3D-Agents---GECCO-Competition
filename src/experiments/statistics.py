@@ -16,9 +16,13 @@ from scipy import stats
 
 def load_results(results_dir: str) -> list[dict]:
     records = []
-    for path in Path(results_dir).glob("*.json"):
+    for path in Path(results_dir).rglob("*.json"):  # recursive: Phase 2/3 use sub-directories
+        if path.name == "selection.json":
+            continue
         with open(path) as f:
-            records.append(json.load(f))
+            r = json.load(f)
+        if "variant" in r and "run_id" in r:  # skip pre-audit records
+            records.append(r)
     return records
 
 

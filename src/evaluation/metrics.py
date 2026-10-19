@@ -15,11 +15,13 @@ class RunMetrics:
     gene_diversity: float
     graph_diversity: float
     convergence_evals: int
+    convergence_evals_improvement: int = 0
     generalisation_score: float | None = None
 
 
 def top_k(population: list[Individual], k: int = 20) -> list[Individual]:
-    return sorted(population, key=lambda i: i.fitness, reverse=True)[:k]
+    valid = [i for i in population if getattr(i, "valid", True)]
+    return sorted(valid, key=lambda i: i.fitness, reverse=True)[:k]
 
 
 def mean_best_fitness(run_results: list[RunResult]) -> float:
@@ -81,16 +83,28 @@ def normalised_score(setting_scores: dict[str, float]) -> dict[str, float]:
 
 
 def generalisation_score(interface: FramsticksInterface, encoding: str, task: str, individual: Individual,
-                          held_out_world_configs: list[dict]) -> float:
-    """Average fitness of one individual re-evaluated on held-out .sim environments not
-    seen during training (Section 5.4). Used in Phase 3 clean-environment evaluation."""
-    if not held_out_world_configs:
+                         held_out_world_configs: list) -> float:
+    """Average fitness of one individual re-evaluated on held-out environments not seen
+    during optimisation (Section 5.4). Each entry may be a WorldConfig, a registered world
+    name, or a dict (see src/framsticks_interface/worlds.py). Worlds in which the genotype
+    cannot be built count as fitness 0 -- failing to work at all in an unseen world is the
+    worst possible generalisation outcome, not a missing value. Use
+    `generalisation_details` for the per-world breakdown."""
+    details = generalisation_details(interface, encoding, task, individual, held_out_world_configs)
+    if not details:
         return individual.fitness
-    fitnesses = []
+    return sum(d["fitness"] for d in details) / len(details)
+
+
+def generalisation_details(interface: FramsticksInterface, encoding: str, task: str, individual: Individual,
+                           held_out_world_configs: list) -> list[dict]:
+    out = []
     for wc in held_out_world_configs:
         result = interface.evaluate(individual.genotype, encoding, task, wc)
-        fitnesses.append(result.fitness)
-    return sum(fitnesses) / len(fitnesses)
+        valid = bool(result.is_valid) and result.fitness == result.fitness  # not NaN
+        name = getattr(wc, "name", None) or (wc.get("name") if isinstance(wc, dict) else str(wc))
+        out.append({"world": name, "fitness": float(result.fitness) if valid else 0.0, "valid": valid})
+    return out
 
 
 def summarise_run(interface: FramsticksInterface, run_result: RunResult, encoding: str) -> RunMetrics:
@@ -99,4 +113,5 @@ def summarise_run(interface: FramsticksInterface, run_result: RunResult, encodin
         gene_diversity=gene_diversity_of_best(interface, run_result, encoding),
         graph_diversity=graph_diversity_of_best(interface, run_result, encoding),
         convergence_evals=convergence_rate(run_result),
+        convergence_evals_improvement=run_result.convergence_evals_improvement,
     )

@@ -102,16 +102,26 @@ and pass it via `--config configs/local_config.yaml` to the scripts below.
 
 ## Running the full experimental pipeline
 
+See **docs/PHASES_AND_CHPC.md** for what each phase is for, the CHPC (Lengau) workflow, and
+measured run times. See **docs/AUDIT_2026-10.md** for the October 2026 audit (bugs fixed,
+determinism validation).
+
 ```bash
-python scripts/run_phase1.py     # controlled internal experiments (Section 5.3)
-python scripts/run_phase2.py     # sensitivity analysis
-python scripts/run_phase3.py     # clean-environment held-out evaluation
-python -m src.experiments.statistics --results results/phase1/  # stats + Dunn's post-hoc
+python scripts/check_framsticks.py --timing          # environment check on a new machine
+python scripts/verify_reproducibility.py             # results must depend only on the seed
+python -m src.experiments.cli run --phase 1 --workers 8      # 800 runs (resumable)
+python -m src.experiments.cli run --phase 2 --workers 8      # 500 runs (can run alongside Phase 1)
+python -m src.experiments.cli phase3-select                  # freeze Phase 1 winners + Phase 2 tuning
+python -m src.experiments.cli run --phase 3 --workers 8      # 10 reconstructed competition settings
+python -m src.experiments.cli aggregate --phase 1            # CSVs + Kruskal-Wallis / Dunn
 ```
 
-Each run writes a JSON + CSV record per (variant, encoding, task, repeat) into `results/`,
-so partial runs can be resumed and results from different lab machines can be merged by
-just copying files into the same `results/` tree before running `statistics.py`.
+On the CHPC: `bash chpc/setup_env.sh`, then `bash chpc/submit.sh smoke|1|2|3`.
+
+Each run writes one JSON file (best fitness/genotype, diversity, convergence, per-generation
+history, settings, provenance) to `results/phaseN/...`; existing files are skipped, so
+interrupted jobs can be resubmitted. Add `--smoke` to any command for a tiny end-to-end
+test (written to `results/smoke/`).
 
 ## Branching / PR workflow suggestion
 
@@ -122,12 +132,12 @@ just copying files into the same `results/` tree before running `statistics.py`.
 
 ## Status
 
-- [x] Repository scaffold, RealFramsticksInterface adapter, f0/f1 encoding stubs
-- [] Gene (Levenshtein) and bounded graph dissimilarity
-- [] Variant 1: NSGA-II baseline
-- [] Variants 2-4: DE-NSGA-II gene / graph / hybrid crowding
-- [] Variant 5: Adaptive DE-NSGA-II (sigmoidal schedule)
-- [] Evaluation metrics + statistics module
-- [x] Real `framspy` / `FramsticksLibCompetition`
-- [ ] Phase 1-3 experiment execution on real Framsticks worlds
+- [x] Repository scaffold, RealFramsticksInterface adapter, f0/f1 encodings
+- [x] Gene (Levenshtein) and graph (Framsticks SimilMeasure) dissimilarity, with a graph-distance cache
+- [x] Variants 1-5 (Variant 4 corrected to the proposal's gene/graph blend; tournament size honoured)
+- [x] Evaluation metrics + statistics module (Kruskal-Wallis + Dunn, normalised score, generalisation)
+- [x] Reproducibility: every run depends only on its seed (incl. native Gaussian-cache fix)
+- [x] Phase 3 world configurations (configs/worlds/phase3_worlds.yaml) wired into the simulator
+- [x] Manifest-based runner + CHPC PBS job arrays (chpc/)
+- [ ] Phase 1-3 experiment execution on the CHPC
 - [ ] Report write-up

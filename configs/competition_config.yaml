@@ -1,0 +1,102 @@
+# Competition comparison (run with: bash chpc/submit.sh comp). Phase 1 manifest under the
+# GECCO reference conditions, so best-fitness values can be compared directly with the
+# published numbers in Brassat (2026), Table 5 (see docs/COMPETITION_REFERENCE.md):
+#   * organisers' example functions TEST_FUNCTION 3 (comp_distance) and 4 (comp_tall_runner)
+#   * reference simulator settings: framspy eval-allcriteria.sim as shipped (Energy0 10000),
+#     deterministic.sim, COG-only recording (same as recording-body-coords.sim with
+#     STORE_ALL_PART_COORDS = 0)
+#   * 100,000 evaluations and 1 hour of algorithm time (excluding simulation) per run
+#   * 20 runs per algorithm, f0 encoding (the thesis baselines are f0, plus Simple EA f1)
+# Our simple_ea f0 should land near the thesis' eaSimpleF0 (171.6 / 70.5): that checks the setup.
+framsticks:
+  framspy_path: null
+  frams_dir: null
+  lib_name: null
+  sim_files: eval-allcriteria.sim;deterministic.sim;recording-cog-only.sim
+  base_world:
+    energy0: 10000          # reference value (stock eval-allcriteria.sim)
+  graph_dissimilarity_mode: greedy
+  eval_budget: 100000
+  time_budget_seconds: 3600
+  deterministic: true
+ga:
+  population_size: 100
+  n_generations: 1400      # 140k offspring ~ 100k simulations after cache hits; the 100k budget stops runs first
+  crossover_prob: 0.7
+  mutation_prob: 0.3
+  tournament_size: 2
+  encodings:
+  - f0
+  cache_fitness: true
+smoke:
+  population_size: 6
+  n_generations: 3
+variants:
+- adaptive_de_nsga2
+- nsga2_baseline
+- de_nsga2_gene
+- simple_ea
+simple_ea:             # FramsticksEvolution.py defaults; budget = same number of offspring as the GA
+  population_size: 50
+  tournament_size: 5
+  mutation_prob: 0.9
+  crossover_prob: 0.2
+hybrid_crowding:
+  gene_weight: 0.5
+adaptive:
+  tau: 0.5
+  steepness: 10.0
+tasks:
+- name: comp_distance
+  description: "TEST_FUNCTION 3: |COG(death) - COG(birth)|"
+- name: comp_tall_runner
+  description: "TEST_FUNCTION 4: distance x mean(max(0, COG z))"
+experiment:
+  n_repeats: 20
+  n_repeats_smoke: 1
+  random_seed_base: 42
+  results_dir: results
+phase2:
+  tasks:
+  - straight_line_cog
+  - jump_height
+  n_repeats: 10
+  budget_evals: 30000
+  population_sizes:
+  - 50
+  - 100
+  - 150
+  - 200
+  tournament_sizes:
+  - 2
+  - 3
+  - 5
+  population_tournament_variant: de_nsga2_gene
+  adaptive_taus:
+  - 0.25
+  - 0.5
+  - 0.75
+  adaptive_steepness:
+  - 10.0
+  hybrid_gene_weights:
+  - 0.0
+  - 0.25
+  - 0.5
+  - 0.75
+  - 1.0
+  encoding: f0
+  hybrid_encodings:
+  - f0
+  - f1
+phase3:
+  worlds_file: null
+  mode: all_variants
+  # all_variants runs these (Phase 1 ranking: adaptive & baseline best, gene = DE-NSGA-II
+  # reference, graph/hybrid dropped: worst and 4x slower on f1); remove the key to run all.
+  variants: [adaptive_de_nsga2, nsga2_baseline, de_nsga2_gene, simple_ea]
+  use_phase2_tuning: false
+  n_repeats: 20
+statistics:
+  alpha: 0.05
+  test: kruskal-wallis
+  posthoc: dunn

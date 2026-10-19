@@ -1,0 +1,22 @@
+#!/bin/bash
+# One element of a PBS job array for Phase $PHASE. Element i runs manifest chunk i of
+# $N_CHUNKS (strided, so every chunk gets a similar mix of variants), with one Python
+# process per core. Finished runs are skipped, so resubmitting the same array resumes it.
+# Submit via chpc/submit.sh, which sets -J, -v PHASE=..,N_CHUNKS=.. and the walltime.
+#PBS -N cos700
+#PBS -q serial
+#PBS -l select=1:ncpus=23:mpiprocs=23
+#PBS -l walltime=24:00:00
+#PBS -j oe
+set -euo pipefail
+cd "${PBS_O_WORKDIR:-$(pwd)}"
+source chpc/env.sh
+cd "$REPO"
+NCPUS_USE="${NCPUS:-23}"
+CHUNK="${PBS_ARRAY_INDEX:-0}"
+mkdir -p "$RESULTS_DIR/logs"
+echo "[$(date)] phase=$PHASE chunk=$CHUNK/$N_CHUNKS workers=$NCPUS_USE host=$(hostname)"
+python -m src.experiments.cli run --phase "$PHASE" --chunk "$CHUNK" --n-chunks "$N_CHUNKS" \
+    --workers "$NCPUS_USE" --quiet-gens \
+    > "$RESULTS_DIR/logs/phase${PHASE}_chunk${CHUNK}_${PBS_JOBID:-local}.log" 2>&1
+echo "[$(date)] done"

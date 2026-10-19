@@ -1,0 +1,120 @@
+# Phase 3 world configurations -- a RECONSTRUCTED competition-style suite.
+#
+# The GECCO Automated Design Competition never publishes its 10 evaluation settings
+# (they are revealed only at scoring time). What IS published is which parameters may
+# change between settings:
+#   2023/2024: lifespan (starting energy, idle metabolism), world size and heightfield map,
+#              water level, gravity, creature body constraints (min/max joint length)
+#   2025:      gravity, water level, terrain, initial agent rotation
+# Every world below varies only those parameters, starting from the standard evaluation
+# world (eval-allcriteria.sim + deterministic.sim: flat 20x20 world, no water, gravity 1,
+# central placement, rotation 0). Keys not listed inherit the project's base world
+# (configs/default_config.yaml -> framsticks.base_world).
+#
+# Keys: world_type (0 flat / 1 blocks / 2 heightfield), world_size, world_map, water_level
+# (-1 = none), gravity, boundaries, energy0, e_meta, rotation (must be 0), creation_height,
+# min_joint, max_joint, target_heading_deg (rotates the desired direction of travel --
+# deterministic stand-in for a rotated start; see src/framsticks_interface/worlds.py).
+#
+# Map strings: "m <nx> <ny> digits" (5 = ground level, 6-9 hills, 1-4 holes, blocks),
+# "M <nx> <ny> floats" (heights, smooth heightfield), "r[*scale] <nx> <ny> <seed>"
+# (random landscape; a fixed seed makes it deterministic -- verified).
+# All values were sanity-checked on the real Framsticks 5.5 simulator (Oct 2026):
+# every world loads, changes the recorded COG path, and restores cleanly.
+
+worlds:
+  flat_reference:
+    description: "Standard evaluation world (the Phase 1/2 training world)"
+
+  flat_short_life:
+    description: "Shorter lifespan: 60% of the base starting energy (fewer steps to act)"
+    energy0: 1500
+
+  low_gravity:
+    description: "Half gravity -- jumps last longer, walking gaits slip"
+    gravity: 0.5
+
+  high_gravity:
+    description: "1.5x gravity -- heavier bodies, harder to lift the COG"
+    gravity: 1.5
+
+  shallow_water:
+    description: "Water 0.5 deep: bodies partly submerged, buoyancy + drag"
+    water_level: 0.5
+
+  deep_water:
+    description: "Water 3.0 deep: fully aquatic, agents must swim"
+    water_level: 3.0
+
+  blocks_terrain:
+    description: "Blocky rough terrain (5x5 blocks of +-1 height) on a 20x20 world"
+    world_type: 1
+    world_size: 20
+    world_map: "m 5 5 56565 65656 56565 65656 56565"
+
+  hill_slope:
+    description: "Smooth heightfield rising 2 units along +x (uphill locomotion)"
+    world_type: 2
+    world_size: 20
+    world_map: "M 5 5 0 0.5 1 1.5 2  0 0.5 1 1.5 2  0 0.5 1 1.5 2  0 0.5 1 1.5 2  0 0.5 1 1.5 2"
+
+  short_joints:
+    description: "Body constraint: joints between 0.3 and 1.6 long (2023/24 'body constraints')"
+    min_joint: 0.3
+    max_joint: 1.6
+
+  rotated_lowgrav:
+    description: "Target direction rotated 90 deg (= agent born rotated -90 deg) at gravity 0.8"
+    gravity: 0.8
+    target_heading_deg: 90
+
+  # ---------------- held-out worlds (never optimised in; Generalisation Score only) ----------
+  heldout_water_lowgrav:
+    description: "Shallow water 0.3 combined with gravity 0.8"
+    water_level: 0.3
+    gravity: 0.8
+
+  heldout_random_hills:
+    description: "Random smooth heightfield (30% amplitude, fixed seed 1234)"
+    world_type: 2
+    world_size: 20
+    world_map: "r*0.3 8 8 1234"
+
+  heldout_heavy_blocks:
+    description: "Gravity 1.3 on a different blocks map"
+    gravity: 1.3
+    world_type: 1
+    world_size: 20
+    world_map: "m 4 4 5655 6556 5565 5655"
+
+  heldout_rotated_long_life:
+    description: "Target heading -45 deg with a 40% longer lifespan"
+    energy0: 3500
+    target_heading_deg: -45
+
+# The 14 settings (world x fitness function): the original 10 for our proxy tasks plus 4 for
+# the organisers' example functions. Each task appears 2-3 times, in different
+# worlds, mirroring the competition's mix of path-following / oscillation / jumping goals.
+settings:
+  - {name: S01_flat_line,        world: flat_reference,  task: straight_line_cog,  rationale: "reference setting = Phase 1 conditions"}
+  - {name: S02_shortlife_bounce, world: flat_short_life, task: sinusoidal_bounce,  rationale: "lifespan variation"}
+  - {name: S03_lowgrav_jump,     world: low_gravity,     task: jump_height,        rationale: "gravity variation"}
+  - {name: S04_highgrav_forward, world: high_gravity,    task: velocity_forward,   rationale: "gravity variation"}
+  - {name: S05_shallow_bounce,   world: shallow_water,   task: sinusoidal_bounce,  rationale: "water level variation"}
+  - {name: S06_deepwater_line,   world: deep_water,      task: straight_line_cog,  rationale: "water level variation (swimming)"}
+  - {name: S07_blocks_forward,   world: blocks_terrain,  task: velocity_forward,   rationale: "terrain variation"}
+  - {name: S08_hill_line,        world: hill_slope,      task: straight_line_cog,  rationale: "heightfield variation"}
+  - {name: S09_joints_jump,      world: short_joints,    task: jump_height,        rationale: "body-constraint variation"}
+  - {name: S10_rotated_forward,  world: rotated_lowgrav, task: velocity_forward,   rationale: "initial-rotation variation (2025)"}
+  # organisers' public example functions (FramsticksLibCompetition TEST_FUNCTION 3 and 4),
+  # added Oct 2026; 2 settings each so every task is tested in at least two new worlds
+  - {name: S11_hill_distance,      world: hill_slope,     task: comp_distance,    rationale: "heightfield variation"}
+  - {name: S12_shallow_distance,   world: shallow_water,  task: comp_distance,    rationale: "water level variation"}
+  - {name: S13_lowgrav_tallrunner, world: low_gravity,    task: comp_tall_runner, rationale: "gravity variation"}
+  - {name: S14_blocks_tallrunner,  world: blocks_terrain, task: comp_tall_runner, rationale: "terrain variation"}
+
+held_out_worlds:
+  - heldout_water_lowgrav
+  - heldout_random_hills
+  - heldout_heavy_blocks
+  - heldout_rotated_long_life

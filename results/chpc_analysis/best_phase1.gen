@@ -1,0 +1,922 @@
+org:
+name:jump f0 adaptive 5.729 r2
+info:~
+phase 1  run_id adaptive_de_nsga2__f0__jump_height__r02_s44
+seed 44  best_fitness 5.729142064524114
+evaluations 20784  world base~
+genotype:~
+//0
+p:1.989, 0.502, 0.44, ing=0.22
+p:2.157, 1.024, -0.49
+p:1.433, -0.709, 1.921, fr=0.433, ing=0.03
+p:1.511, 0.081, 0.335
+p:1.2332211339438603, -0.1667430778476211, 0.006516812543094774, fr=0.065, ing=0.063
+j:2, 0, stif=0.95, rotstif=0.996
+j:1, 4
+j:2, 4
+j:3, 4
+n:j=0, d=@:p=0.954
+n:d=*
+n:d=*
+n:j=2, d=@
+c:0, 1, -7.668
+c:3, 2, 3.126~
+
+org:
+name:jump f0 gene 5.288 r15
+info:~
+phase 1  run_id de_nsga2_gene__f0__jump_height__r15_s57
+seed 57  best_fitness 5.287704627935441
+evaluations 21846  world base~
+genotype:~
+//0
+p:0.738, -0.073, -0.138, fr=0.768, ing=0.253
+p:0.888, -0.367, 1.709, fr=0.478, ing=0.126
+p:0.781, -0.062, 1.813
+p:1.39, 0.236, 1.726, fr=0.349, ing=0.152
+p:2.7679310895085196, -0.19522797250935592, 1.6298192344007296
+j:4, 2
+j:0, 2
+j:0, 3, stif=0.985, rotstif=0.181
+j:1, 2, rotstif=0.864
+n:d=*
+n:j=2, d=@:p=0.989
+n:j=3, d=|:r=0.955
+n:j=1, d=@
+n:j=2, d=|
+c:1, 0, -7.592
+c:2, 0, -0.406
+c:3, 0, 1.369
+c:4, 0, 0.238~
+
+org:
+name:jump f0 graph 6.077 r9
+info:~
+phase 1  run_id de_nsga2_graph__f0__jump_height__r09_s51
+seed 51  best_fitness 6.0766647911637035
+evaluations 20934  world base~
+genotype:~
+//0
+p:0.258718309362415, -0.18396474157249965, -0.3763422922721269, fr=1.148, ing=0.027
+p:0.1913185704928304, -0.5705140852772961, -0.16224139416035, fr=1.632, ing=0.145
+p:0.731, 1.361, -1.555, fr=2.726
+p:0.241, -0.545, -0.198, fr=1.276, ing=0.145
+p:0.7396401938775936, -0.44323138541720497, -0.6925184089354308, fr=2.008, ing=0.47
+j:2, 4
+j:1, 4, stif=0.705, rotstif=0.963
+j:2, 0, stif=0.98, rotstif=0.957
+j:3, 4, stif=0.891, rotstif=0.824
+n:j=0, d=@
+n:j=2, d=@:p=0.831
+n:p=0, d=Gpart
+n:j=2, d=G
+n:p=2, d=Gpart:rz=-0.114
+n:j=1, d=@
+n:p=2, d=T
+n:p=4, d=S
+c:0, 3, -0.318
+c:1, 2, 5.789
+c:5, 4, 1.217~
+
+org:
+name:jump f0 hybrid 5.573 r4
+info:~
+phase 1  run_id de_nsga2_hybrid__f0__jump_height__r04_s46
+seed 46  best_fitness 5.573084940619008
+evaluations 21723  world base~
+genotype:~
+//0
+p:1.6688607493171062, -0.5763376644910936, 0.46866544627510776, fr=1.626, ing=0.549
+p:1.727, 0.811, -0.048, fr=1.894, ing=0.539
+p:1.06, -2.345, 1.176, fr=0.737, ing=0.126
+p:1.477, -0.681, 0.666, fr=1.239
+p:0.9665756039447779, -0.6665832582895312, 0.09276910893026624, fr=2.462, ing=0.437
+j:4, 1, stif=0.703, rotstif=0.92
+j:2, 0, stif=0.86, rotstif=0.768
+j:2, 4
+j:3, 4
+n:j=1, d=@:p=0.97
+n:p=0, d=T:r=0.914
+n:p=1, d=T
+n:j=2, d=@:p=0.999
+c:0, 1, -5.05
+c:3, 2, -0.843~
+
+org:
+name:jump f0 baseline 5.822 r2
+info:~
+phase 1  run_id nsga2_baseline__f0__jump_height__r02_s44
+seed 44  best_fitness 5.821785880399036
+evaluations 21457  world base~
+genotype:~
+//0
+p:0.55, -0.672, 0.092, fr=0.525, ing=0.087
+p:0.8708977773502534, -0.5846501327546965, -0.372573557647803, fr=0.512
+p:0.634, -0.769, 0.094, fr=0.602, ing=0.014
+p:1.504, 1.211, 0.239, fr=1.336, ing=0.763
+p:0.435343104137935, -0.39876920011485106, 0.7545730804532442, fr=1.134, ing=0.011
+j:0, 1
+j:3, 1, rotstif=0.649
+j:2, 1
+j:3, 4, stif=0.965, rotstif=0.983
+n:p=0, d=T
+n:p=2, d=T
+n:j=1, d=@:p=0.905
+n:p=3, d="Gpart:ry=-2.218, rz=-3.688"
+n:j=3, d=@:p=0.983
+n:j=2, d=@
+n:j=1, d=|:p=0.333
+n:p=1, d="Gpart:ry=-2.218, rz=-3.688"
+n:d=*
+n:d=*
+n:p=0, d=T
+c:2, 1, 1.038
+c:4, 3, -6.772
+c:5, 1, -0.631
+c:6, 0, 0.2~
+
+org:
+name:jump f1 adaptive 5.274 r5
+info:~
+phase 1  run_id adaptive_de_nsga2__f1__jump_height__r05_s47
+seed 47  best_fitness 5.2736765665843155
+evaluations 20289  world base~
+genotype:~
+(((Q(M(LLLLQQLXMLLLLLLLLLLLLQX[G][|, 1:-15.753][Gpart, rz:2.03]), X))), X)~
+
+org:
+name:jump f1 gene 6.014 r12
+info:~
+phase 1  run_id de_nsga2_gene__f1__jump_height__r12_s54
+seed 54  best_fitness 6.014265279002791
+evaluations 20721  world base~
+genotype:~
+(((XMMMQLLLLLLLXLLLX[|, 2:20.2][@]), qqqX[Gpart][@]), )~
+
+org:
+name:jump f1 graph 3.955 r9
+info:~
+phase 1  run_id de_nsga2_graph__f1__jump_height__r09_s51
+seed 51  best_fitness 3.9551104122387177
+evaluations 16548  world base~
+genotype:~
+QMQMXQQMX[*][Gpart][Gpart, ry:-0.638][T, rz:0]rL(, , RX[S][|, -3:7.446][G]LX[|, -6:-14.419])~
+
+org:
+name:jump f1 hybrid 4.761 r12
+info:~
+phase 1  run_id de_nsga2_hybrid__f1__jump_height__r12_s54
+seed 54  best_fitness 4.76068202672542
+evaluations 14330  world base~
+genotype:~
+(MMM(, RLLLLMMMX[*]QX[G]LLLX[|, -1:5.136,r:1]), MLLX)~
+
+org:
+name:jump f1 baseline 4.986 r12
+info:~
+phase 1  run_id nsga2_baseline__f1__jump_height__r12_s54
+seed 54  best_fitness 4.985709210913541
+evaluations 19675  world base~
+genotype:~
+(MCX[N, 1:-10.658, 1:5.482, 0:-3.075, in:0.8, 1:-0.618, fo:0.04, in:0, s:0, fo:0.04, fo:0.04,s:0,3:1][G] [G][G]qX[*]MMLLXLqLLX[*][|, -4:13.366])~
+
+org:
+name:sine f0 adaptive 0.766 r19
+info:~
+phase 1  run_id adaptive_de_nsga2__f0__sinusoidal_bounce__r19_s61
+seed 61  best_fitness 0.7664377992168989
+evaluations 22687  world base~
+genotype:~
+//0
+p:1.7445318409596127, 2.1200609280221814, 0.45623400609062137, fr=0.193
+p:1.025004552302521, 0.7256890865508887, -0.39528479204207545, fr=0.284, ing=0.767
+p:0.0829112972658701, 1.6912310990303716, 1.0809905755474258, fr=0.118, ing=0.69
+p:1.3986360749302866, 0.21907536600602384, 0.763459715372437, fr=0.607, ing=0.266
+j:2, 0, stif=0.957, rotstif=0.707
+j:3, 1, stif=0.777
+j:2, 3, stif=0.765, rotstif=0.558
+j:1, 2, stif=0.7, rotstif=0.804
+n:d="N:in=0.835, fo=0.019, si=4.953, s=-0.079"
+n:p=1, d="Gpart:ry=0.257, rz=-1.35"
+n:p=1, d=Gpart
+n:j=1, d=|
+n:j=2, d="|:p=0.006, r=0.972"
+n:j=3, d=|:p=0.268
+n:j=3, d=@:p=0.919
+n:j=2, d=@:p=0.794
+c:3, 1, -2.49~
+
+org:
+name:sine f0 gene 0.645 r13
+info:~
+phase 1  run_id de_nsga2_gene__f0__sinusoidal_bounce__r13_s55
+seed 55  best_fitness 0.6450258292294192
+evaluations 21239  world base~
+genotype:~
+//0
+p:-0.47715383081117135, -0.3753778231605389, -0.6017330156041403
+p:0.2966628606421287, 0.15543368192124396, 0.20516573902514645, fr=1.478, ing=0.307
+p:0.728, -0.386, -1.671, fr=0.721, ing=0.142
+p:1.262, -0.887, -1.446, fr=0.55, ing=0.459
+p:1.26, -0.956, -1.801, fr=1.093, ing=0.237
+p:1.305, -0.471, -0.868, ing=0.316
+p:1.276, -1.288, -1.023, fr=0.425, ing=0.263
+j:0, 1, stif=0.934, rotstif=0.909
+j:0, 2, stif=0.959
+j:3, 0, rotstif=0.74
+j:2, 4, stif=0.839
+j:6, 3
+j:5, 6, rotstif=0.985
+n:j=2, d="|:p=0.016, r=0.966"~
+
+org:
+name:sine f0 graph 0.657 r11
+info:~
+phase 1  run_id de_nsga2_graph__f0__sinusoidal_bounce__r11_s53
+seed 53  best_fitness 0.6569596968029747
+evaluations 19646  world base~
+genotype:~
+//0
+p:2.012, 2.091, -0.803, ing=0.175
+p:1.258, 0.639, -0.462, fr=1.268
+p:0.9705904989470768, 1.213124844994081, -0.6346462775547708, ing=0.363
+p:2.504, 0.346, -1.627
+p:3.253, 0.249, -0.793
+p:1.85330421154352, 0.13083452087082137, -2.3022664974236644, fr=0.761, ing=0.352
+p:-0.17376110509374532, 0.15727410771192063, -0.2814293237430381, fr=1.079, ing=0.26
+p:-0.34449775391600324, 0.037210864248476305, -0.20705894686275997, fr=0.818, ing=0.26
+p:0.609, 1.2, 0.727
+p:1.222, 0.324, -0.012, fr=2.411, ing=0.218
+p:-0.524, -0.259, 1.087
+p:-0.522, 0.582, -0.018, fr=0.781, ing=0.128
+p:-0.3821679755917591, 0.6816153460578498, 0.007345659430035449
+p:1.0202843401493302, 1.4783701267840585, 0.037133304706652326, fr=0.139
+j:1, 11
+j:1, 7, stif=0.845, rotstif=0.938
+j:1, 6
+j:1, 13
+j:2, 1, stif=0.952
+j:0, 13
+j:0, 1
+j:1, 5, stif=0.979
+j:1, 12, stif=0.812, rotstif=0.845
+j:2, 6, stif=0.845, rotstif=0.938
+j:6, 13, stif=0.822, rotstif=0.849
+j:2, 12, stif=0.856
+j:11, 2, stif=0.736
+j:8, 2
+j:7, 13, stif=0.822, rotstif=0.849
+j:7, 2, stif=0.979
+j:9, 1, stif=0.82
+j:3, 5
+j:4, 3
+j:7, 9, stif=0.736
+j:6, 9, stif=0.977, rotstif=0.963
+j:6, 8, stif=0.822, rotstif=0.849
+j:7, 8, stif=0.822, rotstif=0.849
+j:12, 6
+j:11, 6, stif=0.799, rotstif=0.84
+j:12, 7, stif=0.736
+j:11, 7, stif=0.736
+j:7, 6, stif=0.845, rotstif=0.938
+j:13, 12, stif=0.843, rotstif=0.964
+j:11, 13, stif=0.842, rotstif=0.773
+j:12, 9, stif=0.821, rotstif=0.957
+j:11, 9, stif=0.736
+j:10, 11
+j:12, 11, rotstif=0.904
+j:13, 8
+n:p=1, d=Gpart:ry=0.75
+n:p=1, d=Gpart:rz=-1.076
+n:j=7, d=@
+n:j=11, d=G
+n:j=15, d=@
+n:j=14, d=@
+n:p=0, d=S
+n:j=22, d=@
+n:j=24, d=@
+n:j=24, d=|
+n:j=13, d=G
+n:j=28, d=|
+n:j=29, d=@:p=0.998
+n:p=9, d="T:r=0.815, ry=-0.092"
+n:p=10, d=Gpart
+n:p=9, d=Gpart:rz=-1.076
+n:j=30, d=@
+n:p=7, d=S
+c:2, 1, -6.015
+c:4, 3, 1.096
+c:5, 6, -0.301
+c:16, 17, 3.619~
+
+org:
+name:sine f0 hybrid 0.694 r2
+info:~
+phase 1  run_id de_nsga2_hybrid__f0__sinusoidal_bounce__r02_s44
+seed 44  best_fitness 0.6935313397726834
+evaluations 22006  world base~
+genotype:~
+//0
+p:-0.47209125094674986, -0.46457886754838573, -0.7801690287436644, fr=0.744, ing=0.887
+p:0.3421045070064173, -0.18370389840795487, 0.8802734960354579, ing=0.201
+p:0.15329768076909017, -0.024948177879506428, 1.037771567136428, fr=0.35, ing=0.218
+p:-0.12746912996459503, -0.08236365633397469, 0.8444691728425198, fr=0.676, ing=0.328
+p:0.020448512683276077, -0.21451218252995452, 0.7260735773548459, fr=0.383, ing=0.172
+p:-0.39239860752715, 0.306026829102668, 1.02508214832512
+p:-1.275, -0.578, -1.743, ing=0.43
+p:-0.839225510465791, -0.637182773977866, -1.3007231396150918, fr=0.471
+p:-1.311, 0.051, -1.721, ing=0.316
+p:-1.703, 0.828, -1.822
+p:-0.559, -0.557, -0.874, fr=0.37
+p:-0.54992357352681, -0.5812561486748915, -0.8159466069749739, fr=0.533, ing=0.705
+p:0.146, -0.11, -0.52, fr=0.371, ing=0.429
+p:0.029, -1.25, -1.265, fr=0.195, ing=0.571
+p:0.33286850849971095, -1.7374930984917984, -1.479305756746939, fr=1.518, ing=0.088
+j:7, 0, stif=0.91, rotstif=0.826
+j:12, 0, stif=0.932, rotstif=0.67
+j:12, 1
+j:12, 4, stif=0.953, rotstif=0.88
+j:4, 1, stif=0.371, rotstif=0.846
+j:2, 12, stif=0.647, rotstif=0.897
+j:4, 3, stif=0.989, rotstif=0.777
+j:2, 5, stif=0.647, rotstif=0.897
+j:12, 5, rotstif=0.856
+j:12, 3, stif=0.935, rotstif=0.93
+j:7, 12, stif=0.945
+j:8, 6
+j:6, 7
+j:9, 8
+j:13, 12
+j:6, 10, stif=0.91, rotstif=0.826
+j:11, 10
+j:6, 12, stif=0.984, rotstif=0.969
+j:12, 10, stif=0.932, rotstif=0.67
+j:6, 13, stif=0.61, rotstif=0.69
+j:6, 14, stif=0.814, rotstif=0.938
+n:j=0, d=|:r=0.978
+n:j=0, d=@
+n:j=1, d=|:p=0.339
+n:p=0, d=S
+n:j=5, d="|:p=0.102, r=0.896"
+n:j=7, d="|:p=0.102, r=0.916"
+n:j=15, d="|:p=0.301, r=0.978"
+n:j=15, d=@
+n:p=11, d=S
+n:j=18, d=|:p=0.339
+n:p=12, d="Gpart:ry=-0.289, rz=-0.685"
+n:p=14, d=S
+n:p=14, d=S
+n:p=14, d="T:ry=-0.665, rz=-0.601"
+n:p=3, d=T
+c:2, 14, -0.168
+c:9, 10, 7.754~
+
+org:
+name:sine f0 baseline 0.679 r0
+info:~
+phase 1  run_id nsga2_baseline__f0__sinusoidal_bounce__r00_s42
+seed 42  best_fitness 0.6786318115591132
+evaluations 21122  world base~
+genotype:~
+//0
+p:0.5949950021060586, -1.1422967346769564, -0.8113132637476824, fr=0.37, ing=0.09
+p:0.236, -0.948, -0.982, fr=0.187, ing=0.454
+p:0.632, -1.366, -0.934, fr=0.465, ing=0.098
+p:0.957, -0.567, -0.072, fr=0.579, ing=0.285
+p:-0.81, 0.312, -0.189
+p:1.014, 0.194, -2.105, fr=1.582, ing=0.236
+j:3, 1
+j:3, 2, stif=0.966, rotstif=0.978
+j:3, 0, stif=0.898, rotstif=0.796
+j:1, 5, stif=0.959, rotstif=0.813
+j:0, 1, stif=0.996, rotstif=0.8
+j:0, 2, stif=0.898, rotstif=0.796
+j:2, 5, stif=0.959, rotstif=0.832
+j:4, 3
+n:j=3, d="|:p=0.013, r=0.939"
+n:p=1, d=Gpart:ry=-0.532
+n:j=6, d=@:p=0.832
+n:j=6, d="|:p=0.108, r=0.939"
+n:p=2, d=Gpart
+n:p=5, d=Gpart:rz=-0.043
+c:0, 4, 1.236
+c:3, 4, -2.7~
+
+org:
+name:sine f1 adaptive 0.776 r5
+info:~
+phase 1  run_id adaptive_de_nsga2__f1__sinusoidal_bounce__r05_s47
+seed 47  best_fitness 0.7759401911413581
+evaluations 20965  world base~
+genotype:~
+(((R(lX[N, s:-0.074, 0:11.591, 0:-11.646, 0:10.406][N, s:-0.074, 0:11.366, si:-999, 0:-11.939, 0:7.799]X), X[@, p:1, -1:8.212]lX[@, p:0.982, -2:6.14]mLLLcX[T]mfX[|, 4:1][@, p:1, p:0.982, -5:9.975][Gpart]mX[N, 0:-10.082, 0:13.132, s:0.127, si:2, 0:-2.971, -4:2.908]), cfX[Gpart, ry:0.828, ry:0, ry:0.644, rz:0], ), )~
+
+org:
+name:sine f1 gene 0.762 r15
+info:~
+phase 1  run_id de_nsga2_gene__f1__sinusoidal_bounce__r15_s57
+seed 57  best_fitness 0.7623532395803692
+evaluations 21143  world base~
+genotype:~
+(((rrCQQmC(, X))), qCrLllFFX[*]FFXrX[Gpart][N, s:-0.169, 0:8.188, si:-999]X, qMMX[T]X[|, -2:4.051]X, X)~
+
+org:
+name:sine f1 graph 0.661 r3
+info:~
+phase 1  run_id de_nsga2_graph__f1__sinusoidal_bounce__r03_s45
+seed 45  best_fitness 0.6607850111543537
+evaluations 12552  world base~
+genotype:~
+((RXLXXrcX), qCX[|, 4:1]X[S]X[|]LmX[|]QFXXrlMX[S][S]X, , )~
+
+org:
+name:sine f1 hybrid 0.657 r6
+info:~
+phase 1  run_id de_nsga2_hybrid__f1__sinusoidal_bounce__r06_s48
+seed 48  best_fitness 0.6571211689125858
+evaluations 13310  world base~
+genotype:~
+(LLLLLLcQXXLQCCXXX[@]X[T]LQXXX[@, -1:12.998]LXXXXXXXXXXXRXXX[S]X[*])~
+
+org:
+name:sine f1 baseline 0.830 r11
+info:~
+phase 1  run_id nsga2_baseline__f1__sinusoidal_bounce__r11_s53
+seed 53  best_fitness 0.8303761778760432
+evaluations 20916  world base~
+genotype:~
+(L((RCXCCQfLLLLLLLLLfLX[N, 0:5.509, 3:3.081, 0:-2.237, 3:0.313]QX[G][|, p:0.031, -2:-12.619]), fXX[N, -2:1]))~
+
+org:
+name:line f0 adaptive 0.850 r2
+info:~
+phase 1  run_id adaptive_de_nsga2__f0__straight_line_cog__r02_s44
+seed 44  best_fitness 0.8504892199826481
+evaluations 20940  world base~
+genotype:~
+//0
+p:0.2629188367482337, -1.0951990767365243, 0.20269644026926564, fr=1.126, ing=0.096
+p:0.7596113712390595, -1.1013766286877882, -0.579070034549146, fr=0.387, ing=0.383
+p:-0.919, -2.406, 0.524
+p:-0.224, -1.925, 0.49, fr=0.46, ing=0.236
+j:2, 0, stif=0.871
+j:0, 3, stif=0.662
+j:3, 1
+j:0, 1
+j:3, 2, stif=0.696, rotstif=0.72
+n:j=0, d=|
+n:j=4, d=|:r=0.937
+n:j=4, d=G
+c:1, 2, -6.624~
+
+org:
+name:line f0 gene 0.874 r2
+info:~
+phase 1  run_id de_nsga2_gene__f0__straight_line_cog__r02_s44
+seed 44  best_fitness 0.8744455433690123
+evaluations 22006  world base~
+genotype:~
+//0
+p:-0.02430489838279737, 0.15222638764042687, 0.9574892398480923, fr=0.461, ing=0.221
+p:0.29690019122467537, 0.05371417372723153, 0.4429281981407287, ing=0.406
+p:0.837, 0.954, 0.218
+p:1.0416312463158455, 1.0869762541679555, -0.13358155628684087, fr=0.12
+p:0.4647651681078202, 1.3457497815099042, 1.0243415910722922, fr=0.577, ing=0.166
+p:-0.8362920123459989, -2.2771294913462983, 0.530500712606742, ing=0.272
+p:0.12934676445689686, -0.8994588571775906, 0.46923137338978615, fr=0.566, ing=0.273
+p:0.12934676445689686, -0.8994588571775906, 0.46923137338978615, ing=0.273
+p:0.24335844563915554, -0.5950957952174858, 0.5962089591188175, fr=1.27, ing=0.351
+p:-0.6752719718686219, 0.844244935989973, 0.711566788924489, fr=0.07, ing=0.409
+p:-0.7416710513393623, 0.5885966970709295, 0.621832748744133, fr=0.461, ing=0.221
+j:9, 1, stif=0.989, rotstif=0.88
+j:10, 1, stif=0.972, rotstif=0.888
+j:0, 1, rotstif=0.99
+j:8, 0, stif=0.935, rotstif=0.979
+j:6, 0
+j:2, 0, rotstif=0.907
+j:3, 0
+j:2, 6, stif=0.815
+j:1, 6, stif=0.815, rotstif=0.963
+j:0, 9, stif=0.647, rotstif=0.897
+j:10, 0, rotstif=0.896
+j:3, 9, rotstif=0.907
+j:10, 3, rotstif=0.99
+j:2, 9, rotstif=0.984
+j:2, 10, rotstif=0.977
+j:4, 8, rotstif=0.915
+j:8, 1, rotstif=0.99
+j:3, 8, stif=0.815
+j:2, 8, stif=0.815
+j:1, 2, stif=0.881
+j:9, 8
+j:10, 8
+j:6, 9, stif=0.907, rotstif=0.984
+j:6, 10
+j:6, 5, stif=0.696, rotstif=0.72
+j:8, 5, stif=0.696, rotstif=0.72
+j:8, 6, rotstif=0.871
+j:7, 5, stif=0.696, rotstif=0.72
+j:8, 7, rotstif=0.871
+j:1, 7, stif=0.815
+j:7, 2, rotstif=0.974
+n:p=0, d="T:ry=1.213, rz=-1.317"
+n:j=9, d="|:p=0.102, r=0.957"
+n:j=12, d=@
+n:j=16, d=@
+n:p=2, d=T
+n:p=3, d=Gpart:ry=0.816
+n:j=22, d=@:p=0.877
+n:j=24, d=|
+n:j=24, d=G
+n:j=24, d=G
+n:j=25, d=|
+n:j=25, d=G
+n:j=25, d=G
+n:j=27, d=|
+n:j=27, d=G
+n:j=27, d=G
+n:j=28, d=|:p=0.197
+n:p=10, d=T:rz=-1.471
+n:p=10, d=S
+n:j=6, d=@:p=0.877
+c:7, 9, -2.667
+c:10, 12, -2.667
+c:13, 15, -2.667
+c:16, 15, -2.019~
+
+org:
+name:line f0 graph 0.907 r14
+info:~
+phase 1  run_id de_nsga2_graph__f0__straight_line_cog__r14_s56
+seed 56  best_fitness 0.9071401974518262
+evaluations 19326  world base~
+genotype:~
+//0
+p:0.621, 1.579, 0.087, fr=0.165, ing=0.315
+p:-0.332, -0.167, -0.058, ing=0.305
+p:-0.2894922436482221, 2.4421708467431724, 1.5730287706741033, fr=0.288, ing=0.354
+j:0, 1, stif=0.919
+j:0, 2, stif=0.93, rotstif=0.785
+n:p=0, d="T:r=0.836, ry=-3.22"
+n:j=1, d="|:p=0.222, r=0.541"
+n:p=2, d=T
+n:p=2, d=Gpart
+n:p=2, d=S
+n:p=1, d=S
+n:p=2, d=Gpart
+n:p=0, d=S
+n:p=0, d=Gpart
+n:p=1, d=T
+n:p=2, d=S
+n:p=0, d=Gpart
+n:p=1, d=T
+n:p=1, d=Gpart
+n:p=0, d=T
+n:p=2, d=S
+c:1, 0, -3.518~
+
+org:
+name:line f0 hybrid 0.895 r0
+info:~
+phase 1  run_id de_nsga2_hybrid__f0__straight_line_cog__r00_s42
+seed 42  best_fitness 0.8951889221015198
+evaluations 21154  world base~
+genotype:~
+//0
+p:-0.88052958180069, -1.0248571485748732, -0.2150411100076312, fr=0.23, ing=0.175
+p:-1.906, -1.225, 0.488, fr=1.576, ing=0.32
+p:0.28135177382295445, 1.4655224796681563, -2.0324176119953967, ing=0.214
+p:1.5066213448116947, 1.9947703708023683, -1.1881819662764304, fr=0.269
+p:0.14945962943627533, 0.6413665148152882, -0.6175593931875702, fr=0.667, ing=0.412
+p:0.2672479744021983, 0.5270388734486511, -0.6323780976360438, fr=0.414, ing=0.172
+j:0, 4, stif=0.966, rotstif=0.78
+j:1, 0, rotstif=0.887
+j:5, 2, stif=0.961
+j:2, 3, stif=0.926
+j:4, 2, stif=0.923
+j:3, 5, stif=0.959, rotstif=0.909
+j:3, 4, stif=0.902, rotstif=0.909
+j:4, 5, stif=0.924, rotstif=0.877
+n:
+n:d=N:s=-0.134
+n:j=2, d=@
+n:j=2, d=G
+n:j=4, d=@:p=0.958
+n:j=4, d=G
+n:p=4, d=T
+c:1, 0, -0.436
+c:2, 3, -5.123
+c:4, 5, -0.756~
+
+org:
+name:line f0 baseline 0.897 r5
+info:~
+phase 1  run_id nsga2_baseline__f0__straight_line_cog__r05_s47
+seed 47  best_fitness 0.8970480469855012
+evaluations 21758  world base~
+genotype:~
+//0
+p:1.482316798794862, 0.6978618659599669, -0.2657917622443231, fr=1.085, ing=0.223
+p:0.5182977937508866, -0.38199588864810974, -1.095580936028097, fr=0.24, ing=0.247
+p:0.375, -0.368, -0.314, fr=0.27, ing=0.166
+p:-0.03659756941983222, -1.357508643586609, -0.27418426468385415, fr=0.359, ing=0.327
+p:-0.6196140883514678, -0.38098654602395066, -0.1399042555237828, fr=0.381, ing=0.168
+p:-0.8753284860645397, -1.0219440834797595, -0.46498080366395994, fr=0.359, ing=0.336
+p:1.3746921677615775, -0.3635350249427258, 0.007194491038926332, fr=0.392
+p:1.3746921677615775, -0.3635350249427258, 0.007194491038926332
+p:0.8043749140490671, -0.05597277877944362, 0.02968672725186372, fr=0.191, ing=0.266
+p:0.569, -0.123, 0.35, fr=1.109, ing=0.262
+p:0.138, 0.37, 0.718, fr=0.062, ing=0.416
+p:-0.17417676241872693, -1.266349295075072, 0.8932709385125736, fr=0.128, ing=0.371
+p:-0.232, -1.097, 0.454, fr=0.546, ing=0.117
+j:4, 8, stif=0.931, rotstif=0.99
+j:5, 8
+j:4, 2
+j:1, 10, stif=0.995, rotstif=0.868
+j:10, 0, stif=0.718, rotstif=0.923
+j:10, 2
+j:6, 2, stif=0.943, rotstif=0.899
+j:0, 2, stif=0.98
+j:8, 1, stif=0.943, rotstif=0.901
+j:8, 2, stif=0.964, rotstif=0.723
+j:2, 9, stif=0.894, rotstif=0.86
+j:1, 9, stif=0.995, rotstif=0.868
+j:0, 9, stif=0.98
+j:6, 4, stif=0.943, rotstif=0.899
+j:5, 12
+j:3, 11, rotstif=0.958
+j:6, 3, rotstif=0.798
+j:8, 3, stif=0.886, rotstif=0.723
+j:10, 3, rotstif=0.967
+j:5, 9
+j:6, 10, rotstif=0.921
+j:8, 10, rotstif=0.998
+j:8, 9, stif=0.912, rotstif=0.986
+j:7, 4, stif=0.986
+j:7, 9
+j:7, 2, rotstif=0.8
+j:9, 6, stif=0.718, rotstif=0.923
+j:12, 8, stif=0.894, rotstif=0.965
+j:10, 11, rotstif=0.967
+j:10, 12, rotstif=0.967
+j:4, 12, stif=0.879
+j:9, 10, stif=0.591, rotstif=0.988
+j:6, 12, stif=0.907, rotstif=0.899
+j:5, 1
+n:j=4, d=|:r=0.929
+n:j=4, d=G
+n:j=7, d=|:p=0.312
+n:j=9, d="|:p=0.137, r=0.938"
+n:j=10, d=G
+n:j=10, d=|:r=0.929
+n:j=12, d=|:p=0.331
+n:p=1, d=Gpart:rz=3.077
+n:p=1, d=Gpart:rz=0.626
+n:j=16, d=|
+n:j=17, d="|:p=0.137, r=0.938"
+n:j=23, d="|:p=0.118, r=0.812"
+n:j=26, d=|:r=0.929
+n:j=26, d=G
+n:j=27, d=G
+n:p=12, d=T
+n:p=11, d=S
+n:d=N:s=0.07
+n:d=N:s=0.07
+c:0, 15, 0.313
+c:11, 16, -1.861~
+
+org:
+name:line f1 adaptive 0.878 r14
+info:~
+phase 1  run_id adaptive_de_nsga2__f1__straight_line_cog__r14_s56
+seed 56  best_fitness 0.8778262802420345
+evaluations 20540  world base~
+genotype:~
+((M((fMfMMMMMM(, RXXMX[|, 4:8.447]XXMX[|, 2:13.044]X)), X, rFX)), X[T][T, rz:-0.83, r:0.807, r:1, r:1, ry:0][T, r:0.75, rz:1.475][N, 0:9.461, -1:4.411, 0:5.839, fo:0.003, -1:2.12, in:0.8,s:0][N, 0:9.881, -1:2.421, 0:8.535, -1:-1.685, in:0.8][N, 0:13.216, -1:3.944, 0:9.135, fo:0.003, -1:-0.394, in:0.8][N, 0:13.477, -1:2.421, 0:6.889, fo:0.003, -1:-0.394, in:0.818, s:0,in:0.8][N, 0:12.312, -1:2.421, 0:8.641, fo:0.003, -1:-0.394, -2:1, -5:3.575,-7:1])~
+
+org:
+name:line f1 gene 0.940 r14
+info:~
+phase 1  run_id de_nsga2_gene__f1__straight_line_cog__r14_s56
+seed 56  best_fitness 0.9403705569188135
+evaluations 20269  world base~
+genotype:~
+(((MM(, RXfX[N, 1:3.226, 0:5.39][T]MX[|, 3:7.684]X [*]X)), X, ),fX[T, rz:0, ry:0,ry:0,ry:0][N, -1:17.763, -1:-9.308, 0:1, si:2, si:2,fo:0.04][N, -1:17.056, si:2, -1:1.284, -5:-2.696, fo:0.04,si:2][N, -1:16.542, si:2, -1:3.866, -6:-1.813, fo:0.04, -7:3.565])~
+
+org:
+name:line f1 graph 0.810 r11
+info:~
+phase 1  run_id de_nsga2_graph__f1__straight_line_cog__r11_s53
+seed 53  best_fitness 0.8097148783218526
+evaluations 18647  world base~
+genotype:~
+M(qcXX[T]cMX[T]XMMCCX[|, 1:-1.457, r:0.988][T][T]lX, X[Gpart][S][*])~
+
+org:
+name:line f1 hybrid 0.847 r10
+info:~
+phase 1  run_id de_nsga2_hybrid__f1__straight_line_cog__r10_s52
+seed 52  best_fitness 0.8469444702579623
+evaluations 15765  world base~
+genotype:~
+(fffqX[@, 4:15.574, p:1, p:1]RCXCLmmLXXX[|, p:0.251, r:1, 3:7.441]MXMX[|, 2:1.193]X[S], RcX[Gpart, rz:0.63, rz:0])~
+
+org:
+name:line f1 baseline 0.959 r14
+info:~
+phase 1  run_id nsga2_baseline__f1__straight_line_cog__r14_s56
+seed 56  best_fitness 0.9588156055915759
+evaluations 20416  world base~
+genotype:~
+((Fm(FMfffRXMX[|, 3:5.907]MX[|]RX[|])), X, X[T])~
+
+org:
+name:vel f0 adaptive 38.787 r4
+info:~
+phase 1  run_id adaptive_de_nsga2__f0__velocity_forward__r04_s46
+seed 46  best_fitness 38.78694637394856
+evaluations 20781  world base~
+genotype:~
+//0
+p:1.936, 1.859, 1.799, fr=0.15, ing=0.658
+p:1.386, 2.094, 0.914, fr=0.133, ing=0.276
+p:2.361, 3.605, 1.158, fr=1.351, ing=0.038
+p:1.373, 2.126, 1.974, fr=0.602, ing=0.324
+j:2, 1, stif=0.816
+j:3, 2, stif=0.691, rotstif=0.653
+j:0, 1, stif=0.862
+n:p=0, d=Gpart:rz=3.934
+n:j=0, d=@:p=0.878
+c:1, 0, 3.692~
+
+org:
+name:vel f0 gene 34.322 r18
+info:~
+phase 1  run_id de_nsga2_gene__f0__velocity_forward__r18_s60
+seed 60  best_fitness 34.32224432330288
+evaluations 19887  world base~
+genotype:~
+//0
+p:0.2685989089832987, -0.009375671412453546, -0.16906835756173821, fr=0.702, ing=0.179
+p:0.9379939033010303, -0.25635441171518814, -0.9591846456688434, fr=0.198
+p:0.41, -2.004, -0.143, fr=3.01, ing=0.287
+j:1, 2
+j:2, 0, stif=0.562, rotstif=0.744
+n:j=1, d="|:p=0.3, r=0.999"
+n:p=0, d="Gpart:ry=1.451, rz=-0.455"
+n:j=0, d="|:p=0.26, r=0.932"
+c:0, 1, 0.721~
+
+org:
+name:vel f0 graph 52.899 r3
+info:~
+phase 1  run_id de_nsga2_graph__f0__velocity_forward__r03_s45
+seed 45  best_fitness 52.898867034225994
+evaluations 20337  world base~
+genotype:~
+//0
+p:1.4079677679802356, 0.1425746977586977, 0.5146714991293784, fr=0.366
+p:-0.5619871932247906, 0.5334054603901836, 0.6791123188103037, fr=0.796, ing=0.43
+p:1.277, -0.249, 0.751, fr=0.21, ing=0.425
+p:3.2616550910146085, -0.6049516441934853, 0.4494969910050354, fr=0.327, ing=0.425
+j:3, 0, stif=0.984, rotstif=0.984
+j:2, 1, stif=0.972, rotstif=0.907
+j:0, 2, rotstif=0.972
+n:p=1, d=T
+n:p=1, d="Gpart:ry=-0.145, rz=-1.069"
+n:p=2, d="Gpart:ry=-0.145, rz=-1.069"
+n:p=2, d=T
+n:j=1, d=|:p=0.4
+n:p=2, d=Gpart:rz=1.73
+n:p=2, d=S
+n:p=3, d=T
+n:p=2, d=Gpart
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+n:d=*
+c:4, 5, 2.852~
+
+org:
+name:vel f0 hybrid 39.960 r16
+info:~
+phase 1  run_id de_nsga2_hybrid__f0__velocity_forward__r16_s58
+seed 58  best_fitness 39.95981324183264
+evaluations 21268  world base~
+genotype:~
+//0
+p:0.7427906661066143, 0.29180910330161036, 0.3505438264718443, fr=0.905, ing=0.257
+p:0.396449788231644, 0.2347884463609018, 0.12702088775887227, fr=0.346, ing=0.152
+p:0.06317711079852595, -0.9959568555787586, 0.017506644860352555, fr=0.41, ing=0.244
+p:1.113, 0.119, -0.19, fr=0.905
+p:1.5498694824902906, 1.7468587215580866, -0.49141789802465247, fr=0.483, ing=0.04
+p:1.5320326350464766, 1.8594047478124283, -0.13807062677504145, fr=0.663, ing=0.314
+j:1, 4, stif=0.853
+j:5, 3
+j:4, 3, stif=0.968
+j:2, 1
+j:1, 3, stif=0.991
+j:4, 0, stif=0.946
+j:0, 5
+j:2, 3, rotstif=0.908
+n:j=0, d="|:p=0.239, r=0.839"
+n:j=1, d=|
+n:j=2, d="|:p=0.211, r=0.976"
+n:j=5, d="|:p=0.211, r=0.976"
+n:j=4, d="|:p=0.211, r=0.82"
+n:j=6, d=@:p=0.938~
+
+org:
+name:vel f0 baseline 48.992 r5
+info:~
+phase 1  run_id nsga2_baseline__f0__velocity_forward__r05_s47
+seed 47  best_fitness 48.99211626872745
+evaluations 21269  world base~
+genotype:~
+//0
+p:1.583, -0.704, 0.158, fr=1.692, ing=0.309
+p:-0.056, -0.04, -0.151, fr=0.221, ing=0.492
+p:-0.1391258795978476, 0.23845135254740835, -0.22314031917510432, fr=0.341, ing=0.192
+p:-0.354, -0.595, -1.014, fr=1.064, ing=0.161
+p:-0.2308329782385703, 0.11207911179453611, -0.04990586895717944, fr=0.265, ing=0.122
+p:-0.5065895229533995, 1.1267464838809598, 1.4094075634769416
+p:-0.17344912344242358, 0.25083571879189215, 0.20673670975264874, fr=0.035, ing=0.213
+p:-0.379, 0.19, -0.124
+j:0, 6, stif=0.838, rotstif=0.88
+j:2, 0, stif=0.963, rotstif=0.851
+j:3, 1, rotstif=0.885
+j:0, 1, rotstif=0.798
+j:1, 6, stif=0.937, rotstif=0.772
+j:4, 3
+j:4, 0, stif=0.804, rotstif=0.734
+j:5, 1
+j:2, 5
+j:5, 4, rotstif=0.833
+j:7, 6
+n:j=0, d=|
+n:j=1, d="|:p=0.366, r=0.997"
+n:j=3, d=|
+n:p=1, d=T
+n:j=6, d=G
+n:j=6, d=|:p=0.323
+n:j=1, d=@
+n:j=5, d=G
+n:j=7, d=|
+n:d=*
+n:
+c:1, 7, -1.288
+c:2, 7, -2.718
+c:6, 3, 3.868~
+
+org:
+name:vel f1 adaptive 50.128 r17
+info:~
+phase 1  run_id adaptive_de_nsga2__f1__velocity_forward__r17_s59
+seed 59  best_fitness 50.12848818092143
+evaluations 20349  world base~
+genotype:~
+(crXFlcXLMX[@, 5:2.52][T][T][|, 1:3.879, r:0.976,r:1][Gpart], XX[*][N, 2:4.859, -4:-1.989, si:2, 2:2.654, -4:1, in:0.8, 0:-2.893][@, -1:-4.716][G][|, -7:-4.706, p:0.488])~
+
+org:
+name:vel f1 gene 60.226 r15
+info:~
+phase 1  run_id de_nsga2_gene__f1__velocity_forward__r15_s57
+seed 57  best_fitness 60.22553679814928
+evaluations 20337  world base~
+genotype:~
+ffLLXMqqXLLLLLQX[Gpart, rz:-1.549]FFFFMMFqMMX[|, -1:2.459, r:1][Gpart, ry:0.618, ry:-0.598, rz:-1.03, rz:0][Gpart, ry:-0.975, ry:-0.598, rz:-1.03][T, ry:1.096, r:1, ry:-2.39, ry:0][N, si:2, si:2, -1:7.009, 0:-5.108, 1:1.654, 5:-0.738, 3:3.616][T, ry:1.096, r:1, ry:-2.39][Gpart, ry:-0.975, ry:-0.598, ry:0][Gpart, ry:-0.975, ry:-0.598, rz:0][Gpart, ry:-0.975, ry:-0.598, rz:0, rz:0, rz:0][Gpart, ry:-0.975, ry:-0.598, rz:0, rz:0][Gpart, ry:-0.975, rz:0][Gpart, ry:-0.975, ry:-0.598, rz:0, rz:0]~
+
+org:
+name:vel f1 graph 43.351 r14
+info:~
+phase 1  run_id de_nsga2_graph__f1__velocity_forward__r14_s56
+seed 56  best_fitness 43.35073842920573
+evaluations 17298  world base~
+genotype:~
+((((LRLLMMMLMMMX[*]MqLX[|, 1:1.525][Gpart, ry:0, ry:0.105]), X)), X)~
+
+org:
+name:vel f1 hybrid 54.856 r1
+info:~
+phase 1  run_id de_nsga2_hybrid__f1__velocity_forward__r01_s43
+seed 43  best_fitness 54.85589731685962
+evaluations 13961  world base~
+genotype:~
+((((LQXCMMCLX[|, 2:-5.596]LX[@, p:0.648, p:0.897]), qCX), rrXLLCXlX[Gpart, ry:1.441, ry:0,ry:0]), MmFmCX, rrX[Gpart][Gpart, ry:1.864, ry:0][N, -1:1.458, 0:-10.846, -2:-6.378, 0:3.058, 1:-1.77, -1:5.619, -2:-0.024][N, -1:-3.495, 0:-8.27, -2:-2.03, 0:-2.498, 1:1.543, -4:6.442, fo:0.04][N, -1:-3.495, 0:-8.27, -2:-1.846, 0:-2.509, 1:-1.77, -4:-0.136, -4:1][N, -1:-3.495, 0:-8.27, -2:-1.171, 0:-2.498, 1:-1.77, -4:-1.096, -4:1][Gpart, ry:-0.334])~
+
+org:
+name:vel f1 baseline 65.692 r15
+info:~
+phase 1  run_id nsga2_baseline__f1__velocity_forward__r15_s57
+seed 57  best_fitness 65.69231755526842
+evaluations 20651  world base~
+genotype:~
+(XqllLLLLLLLLLLLLLLLcX[G][Gpart, rz:-1.52, ry:0]QXFqMcX[*]XX[|, -2:3.479], )~
+

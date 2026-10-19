@@ -45,19 +45,19 @@ def run_graph_crowding(interface: FramsticksInterface, encoding: str, task: str,
 
 
 def run_hybrid_crowding(interface: FramsticksInterface, encoding: str, task: str,
-                         config: EngineConfig, seed: int, world_config: dict | None = None,
-                         gene_weight: float | None = None) -> RunResult:
-    """Variant 4: crowding distance = weighted blend of gene and graph dissimilarity,
-    ALSO blended against objective-space crowding via `config.hybrid_weight`
-    (see crowding.blended_crowding_distance). `gene_weight` (if given) overrides
-    `config.hybrid_weight` for this run -- used by Phase 2 sensitivity analysis
-    (Section 5.3) to sweep the gene/graph balance per encoding.
+                        config: EngineConfig, seed: int, world_config: dict | None = None,
+                        gene_weight: float | None = None) -> RunResult:
+    """Variant 4 (proposal Section 5.1): crowding distance = average pairwise dissimilarity
+    where D_ij = w * gene_ij/max(gene) + (1 - w) * graph_ij/max(graph), with
+    w = `config.hybrid_weight` ("weight tuned per encoding type" -- swept in Phase 2).
+    w = 1 reduces to Variant 2 (gene) and w = 0 to Variant 3 (graph), which Phase 2 uses
+    as a built-in consistency check. `gene_weight` (if given) overrides config.hybrid_weight.
     """
     if gene_weight is not None:
         config = EngineConfig(**{**config.__dict__, "hybrid_weight": gene_weight})
     return run_evolution(
         interface=interface, encoding=encoding, task=task,
-        crowding_strategy=CrowdingStrategy.HYBRID,
+        crowding_strategy=CrowdingStrategy.DISSIMILARITY,
         diversity_measure=DiversityMeasure.HYBRID,
         config=config, seed=seed, world_config=world_config,
     )

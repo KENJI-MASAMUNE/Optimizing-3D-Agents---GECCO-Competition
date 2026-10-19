@@ -1,0 +1,81 @@
+# The recording of the "center of gravity" (or mass) of all Parts of a creature during its lifespan, and
+# the recording of coordinates of all Parts are stored as data->bodyrecording.
+# Use STORE_ALL_PART_COORDS below to decide how much data you need recorded - maybe only COG and no Parts.
+#
+# If STORE_ALL_PART_COORDS=0 below, only COG is stored and the format is
+# [ [cog1x,cog1y,cog1z], [cog2x,cog2y,cog2z], [cog3x,cog3y,cog3z], ...]
+# where index numbers in the names are simulation steps.
+# So you get a vector of COG x,y,z coordinates repeated for every simulation step.
+#
+# If STORE_ALL_PART_COORDS=1 below, the format is more verbose with one more level of nesting, because after the COG,
+# the list of coordinates of all Parts follows (the first index in the names below is the simulation step, the second one is Part number)
+# [ [[cog1x,cog1y,cog1z], [p1_1x,p1_1y,p1_1z], [p1_2x,p1_2y,p1_2z], ...], ...]
+#
+# You can further limit the amount of stored data by recording coordinates less frequently - see onCreaturesStep() comment below.
+# Adjust 'Energy0' to achieve the lifespan you need.
+# 'evalcount' should likely be 1 unless you need other performance criteria (like vertpos or distance) averaged from multiple evaluations.
+# Put this file in the "data" subdirectory within the Framsticks distribution unless you prefer to provide its path when loading.
+
+sim_params:
+expdef:standard-eval
+evalplan:~
+:numparts,numjoints,numneurons,numconnections,instances,lifespan,velocity,distance,vertvel,vertpos,fit,fit_stdev,time,data->bodyrecording~
+usercode:~
+function onBorn(cr)
+{
+	super_onBorn(cr);
+	cr.data->bodyrecording=[]; //in the creature's "data" dictionary, create the key "bodyrecording" and initialize its value to empty vector. Equivalent to cr.data["bodyrecording"]=[]
+}
+
+function onCreaturesStep(cr) //change to onCreaturesUpdate(cr) if you want to record every "perfperiod" steps instead of every single step
+{
+	//super_onCreaturesStep(cr); //there is no onCreaturesStep() defined in parent expdef
+	record(cr);
+}
+
+function addGenotypePerformanceFromCreature(g, cr) //this function is called twice per one evaluation, see comments in super_addGenotypePerformanceFromCreature(). For each evaluation, it is called once with g.instances=0 and empty g.data (to collect a single copy of cr.data) and then once again for instances>=0 (to aggregate cr.data into g.data according to a custom logic implemented in this function).
+/*
+For example for evalcount=3, if we wanted to aggregate vectors by appending them:
+evaluation #1, instances=0: we append [1,2,3] to empty
+evaluation #1, instances=0: we append [1,2,3] to empty
+evaluation #2, instances=0: we append [4,5,6] to empty
+evaluation #2, instances=1: we append [4,5,6] to [1,2,3]
+evaluation #3, instances=0: we append [7,8,9] to empty
+evaluation #3, instances=2: we append [7,8,9] to [1,2,3],[4,5,6]
+*/
+{
+	//In the code below, we do not support evalcount>1, i.e. we do not collect more information from more evaluations. The last evaluation wins, so we do not have any "aggregation logic" here.
+	//Simulator.print(g.instances); //for debugging double-calls if we ever wanted to have some aggregation logic (then also display g.data)
+	super_addGenotypePerformanceFromCreature(g, cr);
+
+	g.data->bodyrecording = cr.data->bodyrecording; //no averaging or any other form of aggregation - here assuming we only evaluate a given Genotype object once; if not, then we ignore (overwrite) recordings from previous evaluations of this genotype
+	
+	//Simulator.print("Recorded time steps: %d" % g.data->bodyrecording.size); //just for debugging
+	return g;
+}
+
+
+// If needed, you can modify the function below to record the bounding box of the agent (to know the extreme values of Part coordinates
+// without recording the coordinates of all Parts), to record MechJoint propertes, Neuro signals etc. See available fields in
+// http://www.framsticks.com/files/classdoc/c_creature.html
+function record(cr)
+{
+	const STORE_ALL_PART_COORDS = 0; //set to 0 to significantly reduce the amount of data recorded (will only record COG, not all Parts)
+	if (cr.perf_measuring == 1) //record body position only when the creature is in the "performance measuring" period
+	{
+		var cog = cr.centerOfGravity.toVector; // toVector yields [centerOfGravity.x, centerOfGravity.y, centerOfGravityg.z]
+		if (STORE_ALL_PART_COORDS)
+		{
+			var now = [cog];
+			for (var j=0; j<cr.numparts; j++)
+			{
+				var part = cr.getMechPart(j);
+				now.add([part.x, part.y, part.z]);
+			}
+			cr.data->bodyrecording.add(now);
+		} else
+			cr.data->bodyrecording.add(cog);
+	}
+}
+
+~

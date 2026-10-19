@@ -28,7 +28,7 @@ from src.framsticks_interface.encodings import (
     mutate_genotype,
     random_genotype,
 )
-from src.framsticks_interface.interface import EvaluationResult, FramsticksInterface
+from src.framsticks_interface.interface import BudgetExhausted, EvaluationResult, FramsticksInterface
 
 TRAIT_DIM = 8
 
@@ -64,14 +64,27 @@ def _task_target(task: str) -> list[float]:
 
 
 class FakeFramsticksInterface(FramsticksInterface):
-    def __init__(self, seed: int | None = None):
+    def __init__(self, seed: int | None = None, eval_budget: int | None = None):
         self.n_evaluations = 0
         self._rng = random.Random(seed)
+        self.eval_budget = eval_budget
+        self.current_world = None
 
     def reset_evaluation_budget(self) -> None:
         """Mirrors RealFramsticksInterface's method of the same name -- run_single.py
         calls this before every run so evaluation counts don't leak across repeats."""
         self.n_evaluations = 0
+
+    def set_budget(self, eval_budget: int | None = None, time_budget_seconds: int | None = None) -> None:
+        if eval_budget is not None:
+            self.eval_budget = eval_budget
+
+    def reseed(self, seed: int) -> None:
+        """Mirrors RealFramsticksInterface.reseed(): all randomness from `seed` alone."""
+        self._rng = random.Random(seed)
+
+    def set_world(self, world_config) -> None:
+        self.current_world = world_config
 
     def get_random_genotype(self, encoding: str) -> str:
         return random_genotype(encoding, rng=self._rng)
@@ -100,12 +113,16 @@ class FakeFramsticksInterface(FramsticksInterface):
         raise ValueError(f"Unknown dissimilarity measure '{measure}'")
 
     def evaluate(self, genotype: str, encoding: str, task: str, world_config: dict | None = None) -> EvaluationResult:
+        if self.eval_budget is not None and self.n_evaluations >= self.eval_budget:
+            raise BudgetExhausted(f"fake budget of {self.eval_budget} evaluations used up")
         self.n_evaluations += 1
         traits = _trait_vector(genotype)
         target = _task_target(task)
 
         if world_config:
-            offset = sum(hash(f"{k}{v}") for k, v in sorted(world_config.items())) % 1000 / 1000.0
+            key = world_config if isinstance(world_config, str) else repr(sorted(dict(world_config).items())) \
+                if isinstance(world_config, dict) else getattr(world_config, "name", repr(world_config))
+            offset = int(hashlib.md5(str(key).encode()).hexdigest(), 16) % 1000 / 1000.0
             target = [(t + 0.1 * offset) % 1.0 for t in target]
 
         sq_err = sum((t - x) ** 2 for t, x in zip(traits, target))

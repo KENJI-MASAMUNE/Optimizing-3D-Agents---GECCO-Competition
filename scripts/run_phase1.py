@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
-"""Convenience entry point: `python scripts/run_phase1.py [--smoke] [--config PATH]`"""
+"""Convenience entry point: `python scripts/run_phase1.py [--smoke] [--config PATH] [--workers N]`
+(equivalent to `python -m src.experiments.cli run --phase 1 ...`)."""
 import sys
 from pathlib import Path
 
@@ -13,5 +14,6 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--config", default=None)
     parser.add_argument("--smoke", action="store_true", help="Quick sanity run")
+    parser.add_argument("--workers", type=int, default=1)
     args = parser.parse_args()
-    run_phase1(args.config, smoke=args.smoke)
+    raise SystemExit(run_phase1(args.config, smoke=args.smoke, workers=args.workers))

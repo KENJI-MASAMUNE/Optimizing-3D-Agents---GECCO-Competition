@@ -8,6 +8,7 @@ import sys
 from pathlib import Path
 
 import numpy as np
+import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
@@ -76,7 +77,7 @@ def test_sinusoidal_bounce_perfect_match():
     t = np.arange(300)
     z = 0.5 + 0.1 * np.sin(t / 100.0)
     path = np.stack([np.zeros_like(z), np.zeros_like(z), z], axis=1)
-    assert fitness_sinusoidal_bounce(path) == 1.0
+    assert fitness_sinusoidal_bounce(path) == pytest.approx(1.0)
 
 
 def test_sinusoidal_bounce_static_creature_scores_below_max():

@@ -1,26 +1,38 @@
 # Default experiment configuration for the DE-NSGA-II Framsticks project.
-# See README.md for how to switch from the mock backend to the real Framsticks/framspy install.
+# Local machine: set framspy_path / frams_dir below (or export FRAMSPY_PATH / FRAMS_DIR).
+# CHPC: use configs/chpc_config.yaml (identical experiment settings, paths from env vars).
 
 framsticks:
-  framspy_path: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\framspy          # e.g. "C:/SalmaanP/.../framspy" -- directory containing
-                                                                                                                        # FramsticksLib.py / FramsticksLibCompetition.py directly
-  frams_dir: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\Framsticks55        # e.g. "C:/SalmaanP/.../Framsticks55" -- the "-path" argument
-                                                                                                                        # FramsticksLib expects: directory containing frams-objects.dll/.so,
-  lib_name: null                # optional; leave null to use the platform default
-                                # (frams-objects.dll / .so / .dylib)
-  sim_files: "eval-allcriteria.sim;deterministic.sim;recording-body-coords.sim"
-  # -----------------------------------------
-  eval_budget: 100000          # competition rule: 100,000 fitness evaluations
-  time_budget_seconds: 3600    # competition rule: 1 hour wall-clock per run 3600
+  framspy_path: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\framspy   # dir containing FramsticksLib.py
+  frams_dir: C:\SalmaanP\SP_Workspace\Year4\COS700\Project\Optimizing-3D-Agents---GECCO-Competition\Framsticks55  # dir containing frams-objects.dll/.so
+  lib_name: null                # optional; null = platform default (frams-objects.dll / .so / .dylib)
+  # Files found in the repo's framsticks_sim/ folder are loaded from there (versioned with the
+  # code); anything else is looked up in Framsticks' own data/ folder.
+  # recording-cog-only.sim = recording-body-coords.sim with STORE_ALL_PART_COORDS = 0: identical
+  # COG path (verified), ~9x faster evaluation because per-part coordinates are not serialised.
+  sim_files: "eval-allcriteria.sim;deterministic.sim;recording-cog-only.sim"
+  # Base (training) world applied on top of the .sim files, so every machine trains in exactly
+  # the same world. Energy0 = lifespan in simulation steps (e_meta = 1). 2500 matches the
+  # value in the local Framsticks55/data/eval-allcriteria.sim used for the existing results.
+  base_world:
+    energy0: 2500
+  graph_dissimilarity_mode: greedy   # greedy (fast, approximate) | optim (slow, exact)
+  eval_budget: 100000          # competition rule: 100,000 fitness evaluations per run
+  time_budget_seconds: 3600    # competition rule: 1 hour per run, EXCLUDING evaluation time
   deterministic: true
 
-ga:
-  population_size: 10         # 100
-  n_generations: 3           # 60
-  crossover_prob: 0.7         # 0.7   
-  mutation_prob: 0.3          # 0.3
-  tournament_size: 3          # 2
+ga:                            # proposal values (Section 5.3)
+  population_size: 100
+  n_generations: 300
+  crossover_prob: 0.7
+  mutation_prob: 0.3
+  tournament_size: 2
   encodings: ["f0", "f1"]
+  cache_fitness: true          # reuse fitness of genotypes already simulated in the same run
+
+smoke:                         # used by --smoke (tiny end-to-end check)
+  population_size: 6
+  n_generations: 3
 
 variants:
   - nsga2_baseline
@@ -28,32 +40,62 @@ variants:
   - de_nsga2_graph
   - de_nsga2_hybrid
   - adaptive_de_nsga2
+  - simple_ea            # organisers' baseline (framspy FramsticksEvolution / DEAP eaSimple)
+
+simple_ea:               # FramsticksEvolution.py defaults; budget = same number of offspring as the GA
+  population_size: 50
+  tournament_size: 5
+  mutation_prob: 0.9
+  crossover_prob: 0.2
 
 hybrid_crowding:
-  gene_weight: 0.5   # tuned per Section 5.1 Variant 4; overridden per-encoding in Phase 2
+  gene_weight: 0.5   # Variant 4: weight of gene (vs graph) dissimilarity; tuned per encoding in Phase 2
 
 adaptive:
   tau: 0.5            # sigmoid midpoint, as a fraction of n_generations
-  steepness: 10.0      # sigmoid steepness k
+  steepness: 10.0     # sigmoid steepness k
 
 tasks:
-  # Proxy tasks used for Phase 1 controlled experiments (Section 5.3), standing in for the
-  # 10 official competition (environment x fitness function) settings until competition
-  # worlds are released.
+  # Proxy tasks used for Phase 1 controlled experiments (Section 5.3).
   - name: straight_line_cog
-    description: "COG follows a straight 3D line; fitness = 1.0 / RMSE(COG, target_line)"
+    description: "COG follows a fixed straight line (10 units along +x); fitness = 1/(1+RMSE)"
   - name: sinusoidal_bounce
-    description: "COG follows 0.5 + 0.1*sin(t/100); fitness = 1.0 / sum_abs_diff"
+    description: "COG height oscillates as c + 0.1*sin(t/100), offset c fitted; fitness = 1/(1+RMSE/0.1); stationary creature = 0.586"
   - name: velocity_forward
     description: "Maximise forward displacement of COG over the episode"
   - name: jump_height
     description: "Maximise peak vertical COG displacement"
+  - name: comp_distance
+    description: "Organisers' example TEST_FUNCTION 3: |COG(death) - COG(birth)| (any direction)"
+  - name: comp_tall_runner
+    description: "Organisers' example TEST_FUNCTION 4: distance x mean(max(0, COG z))"
 
 experiment:
-  n_repeats: 1              # competition rule: each setting repeated 20 times
-  n_repeats_smoke: 2          # used by --smoke flag for fast sanity runs
+  n_repeats: 20               # competition rule: each setting repeated 20 times
+  n_repeats_smoke: 1
   random_seed_base: 42
   results_dir: "results"
+
+phase2:
+  tasks: [straight_line_cog, jump_height]       # one locomotion + one vertical task
+  n_repeats: 10
+  budget_evals: 30000                            # pop x generations held constant in sweep A
+  population_sizes: [50, 100, 150, 200]
+  tournament_sizes: [2, 3, 5]
+  population_tournament_variant: de_nsga2_gene
+  adaptive_taus: [0.25, 0.5, 0.75]
+  adaptive_steepness: [10.0]
+  hybrid_gene_weights: [0.0, 0.25, 0.5, 0.75, 1.0]
+  encoding: f0                                  # encoding for sweeps A and B
+  hybrid_encodings: [f0, f1]                    # sweep C is per encoding (proposal)
+
+phase3:
+  worlds_file: null            # null = configs/worlds/phase3_worlds.yaml
+  mode: best_per_task          # proposal: Phase 1 winner per task + NSGA-II and Simple EA controls
+  # used only with mode: all_variants
+  variants: [adaptive_de_nsga2, nsga2_baseline, de_nsga2_gene, simple_ea]
+  use_phase2_tuning: false
+  n_repeats: 20
 
 statistics:
   alpha: 0.05

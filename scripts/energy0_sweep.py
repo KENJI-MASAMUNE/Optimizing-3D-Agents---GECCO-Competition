@@ -78,6 +78,10 @@ def make_repeat_config(base_config: dict, base_config_path: str, override_sim_na
     sim_list = original_sim_files.split(";")
     sim_list[0] = override_sim_name  # assumes eval-allcriteria.sim is first, matching the default
     fconf["sim_files"] = ";".join(sim_list)
+    # framsticks.base_world (added Oct 2026) is applied AFTER the .sim files and would
+    # silently override the swept Energy0 -- drop its energy0 so the override file wins.
+    if fconf.get("base_world"):
+        fconf["base_world"] = {k: v for k, v in fconf["base_world"].items() if k != "energy0"}
     fconf["random_seed"] = repeat_seed
 
     config["framsticks"] = fconf

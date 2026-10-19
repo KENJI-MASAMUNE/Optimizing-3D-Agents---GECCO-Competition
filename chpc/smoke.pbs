@@ -1,0 +1,23 @@
+#!/bin/bash
+# Short end-to-end check ON A COMPUTE NODE before launching the real phases:
+# Framsticks loads, reproducibility holds, smoke runs of all three phases succeed, and a
+# timing estimate for one full-size run is printed.
+#   qsub -P $CHPC_PROJECT chpc/smoke.pbs        (or: bash chpc/submit.sh smoke)
+#PBS -N cos700_smoke
+#PBS -q serial
+#PBS -l select=1:ncpus=4:mpiprocs=4
+#PBS -l walltime=01:00:00
+#PBS -o cos700_smoke.out
+#PBS -j oe
+set -euo pipefail
+cd "${PBS_O_WORKDIR:-$(pwd)}"
+source chpc/env.sh
+cd "$REPO"
+python scripts/check_framsticks.py --config "$EXPERIMENT_CONFIG" --timing
+python scripts/verify_reproducibility.py --config "$EXPERIMENT_CONFIG" --workers 3
+python -m src.experiments.cli run --phase 1 --smoke --workers 4
+python -m src.experiments.cli run --phase 2 --smoke --workers 4
+python -m src.experiments.cli phase3-select --smoke
+python -m src.experiments.cli run --phase 3 --smoke --workers 4
+for p in 1 2 3; do python -m src.experiments.cli aggregate --phase $p --smoke; done
+echo "SMOKE OK"

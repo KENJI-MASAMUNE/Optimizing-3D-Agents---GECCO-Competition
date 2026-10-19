@@ -35,8 +35,8 @@ def sigmoid_weight(progress: float, tau: float, steepness: float) -> float:
     """Standalone helper (exposed for unit testing / plotting the schedule independently
     of a full evolutionary run). `progress` in [0, 1] is generation / (n_generations - 1).
     Returns the dissimilarity-crowding weight in (0, 1): ~1 early, ~0 late, for tau=0.5."""
-    import math
-    return 1.0 / (1.0 + math.exp(steepness * (progress - tau)))
+    from src.algorithms.engine import sigmoid_schedule
+    return sigmoid_schedule(progress, tau, steepness)
 
 
 def run(interface: FramsticksInterface, encoding: str, task: str, config: EngineConfig,

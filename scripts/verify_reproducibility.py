@@ -1,123 +1,78 @@
 #!/usr/bin/env python3
 """
-Reproducibility check split into two safe steps, avoiding calling frams.init() twice in
-one process (untested, possibly unsafe):
+Reproducibility check on the REAL simulator (run this once on every new machine, e.g. on a
+CHPC compute node before submitting the big jobs).
 
-    1. Run once, save per-generation results to a JSON file:
-       python scripts/verify_reproducibility.py --save results/repro_a.json
+It runs the Phase 1 smoke manifest three times, each in fresh processes:
+  A) all runs sequentially in one process,
+  B) the same runs spread over a process pool (different run-to-worker assignment),
+  C) a subset in reverse order with a different PYTHONHASHSEED,
+and checks that every run produced exactly the same best fitness, best genotype and
+per-generation history. Passing means a run's result depends only on its seed -- the
+property the CHPC job arrays rely on.
 
-    2. Run again -- SEPARATE process launch, same command but a different --save path:
-       python scripts/verify_reproducibility.py --save results/repro_b.json
-
-    3. Compare the two saved files (no Framsticks needed for this step):
-       python scripts/verify_reproducibility.py --compare results/repro_a.json results/repro_b.json
+    python scripts/verify_reproducibility.py --config configs/chpc_config.yaml
 """
 from __future__ import annotations
 
 import argparse
 import json
+import os
+import subprocess
 import sys
+import tempfile
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
+ROOT = Path(__file__).resolve().parents[1]
 
 
-def do_run(args):
-    from src.algorithms import de_nsga2
-    from src.algorithms.engine import EngineConfig
-    from src.framsticks_interface.interface import get_interface
-    from src.utils.config import load_config, seed_everything
-
-    config = load_config(args.config)
-    seed_everything(config["experiment"]["random_seed_base"])
-    interface = get_interface(config)
-
-    eval_budget = args.eval_budget or max(config["framsticks"]["eval_budget"],
-                                           args.population_size * args.generations * 2)
-    engine_config = EngineConfig(
-        population_size=args.population_size,
-        n_generations=args.generations,
-        crossover_prob=config["ga"]["crossover_prob"],
-        mutation_prob=config["ga"]["mutation_prob"],
-        tournament_size=config["ga"]["tournament_size"],
-        eval_budget=eval_budget,
-    )
-
-    print(f"Running population={args.population_size} generations={args.generations} seed={args.seed}\n")
-    result = de_nsga2.run_gene_crowding(interface, "f1", "straight_line_cog", engine_config, seed=args.seed)
-
-    history = [{"generation": g.generation, "best_fitness": g.best_fitness, "mean_fitness": g.mean_fitness}
-               for g in result.history]
-
-    out_path = Path(args.save)
-    out_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(out_path, "w") as f:
-        json.dump({"history": history, "final_genotype": result.best_individual.genotype}, f, indent=2)
-    print(f"\nSaved to {out_path}")
-    print(f"Final best fitness: {result.best_individual.fitness:.6f}")
+def _run(results_dir: Path, config: str | None, extra: list[str], env_extra: dict | None = None) -> None:
+    env = dict(os.environ, RESULTS_DIR=str(results_dir), **(env_extra or {}))
+    cmd = [sys.executable, "-m", "src.experiments.cli", "run", "--phase", "1", "--smoke", "--quiet-gens"] + extra
+    if config:
+        cmd += ["--config", config]
+    subprocess.run(cmd, cwd=ROOT, env=env, check=True)
 
 
-def do_compare(paths):
-    with open(paths[0]) as f:
-        run_a = json.load(f)
-    with open(paths[1]) as f:
-        run_b = json.load(f)
-
-    hist_a, hist_b = run_a["history"], run_b["history"]
-    if len(hist_a) != len(hist_b):
-        print(f"MISMATCH: different number of generations ({len(hist_a)} vs {len(hist_b)}) -- "
-              f"can't compare directly. Did both runs use the same --generations value?")
-        return
-
-    print(f"{'gen':>4}  {'a_best':>10}  {'b_best':>10}  {'match':>6}  "
-          f"{'a_mean':>10}  {'b_mean':>10}  {'match':>6}")
-    all_match = True
-    for a, b in zip(hist_a, hist_b):
-        best_match = a["best_fitness"] == b["best_fitness"]
-        mean_match = a["mean_fitness"] == b["mean_fitness"]
-        if not (best_match and mean_match):
-            all_match = False
-        print(f"{a['generation']:4d}  {a['best_fitness']:10.6f}  {b['best_fitness']:10.6f}  "
-              f"{'YES' if best_match else 'NO':>6}  "
-              f"{a['mean_fitness']:10.6f}  {b['mean_fitness']:10.6f}  "
-              f"{'YES' if mean_match else 'NO':>6}")
-
-    genotype_match = run_a["final_genotype"] == run_b["final_genotype"]
-    print(f"\nFinal best genotype match: {'YES' if genotype_match else 'NO'}")
-    if not genotype_match:
-        print(f"  a: {run_a['final_genotype']!r}")
-        print(f"  b: {run_b['final_genotype']!r}")
-
-    print()
-    if all_match:
-        print("REPRODUCIBLE: every generation's best/mean fitness matched exactly between runs.")
-    else:
-        print("NOT FULLY REPRODUCIBLE: at least one generation's fitness differed. Check where "
-              "the first mismatch appears above -- an early, small, non-growing gap suggests "
-              "residual noise deep in a retry path; a gap that widens over generations suggests "
-              "it's compounding and is worth investigating further before trusting comparisons "
-              "across separate runs.")
+def _load(results_dir: Path) -> dict:
+    out = {}
+    for p in (results_dir / "smoke" / "phase1").glob("*.json"):
+        r = json.loads(p.read_text())
+        out[p.name] = (r["best_fitness"], r["best_genotype"], [h["best_fitness"] for h in r["history"]],
+                       [h["mean_fitness"] for h in r["history"]], r["n_evaluations"])
+    return out
 
 
-def main():
-    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    parser.add_argument("--config", default=None)
-    parser.add_argument("--population-size", type=int, default=10)
-    parser.add_argument("--generations", type=int, default=3)
-    parser.add_argument("--eval-budget", type=int, default=None)
-    parser.add_argument("--seed", type=int, default=1)
-    parser.add_argument("--save", default=None, help="Path to save this run's results as JSON")
-    parser.add_argument("--compare", nargs=2, metavar=("RUN_A", "RUN_B"),
-                         help="Compare two previously-saved JSON result files (no Framsticks needed)")
-    args = parser.parse_args()
+def main() -> int:
+    ap = argparse.ArgumentParser()
+    ap.add_argument("--config", default=None)
+    ap.add_argument("--workers", type=int, default=3)
+    args = ap.parse_args()
 
-    if args.compare:
-        do_compare(args.compare)
-    elif args.save:
-        do_run(args)
-    else:
-        parser.error("Specify either --save PATH (to run and save) or --compare A B (to diff two saved runs)")
+    with tempfile.TemporaryDirectory() as tmp:
+        tmp = Path(tmp)
+        _run(tmp / "A", args.config, ["--workers", "1"])
+        _run(tmp / "B", args.config, ["--workers", str(args.workers)])
+        a = _load(tmp / "A")
+        n = len(a)
+        subset = list(range(n))[::-2]
+        _run(tmp / "C", args.config, ["--index", *map(str, subset)], {"PYTHONHASHSEED": "12345"})
+        b, c = _load(tmp / "B"), _load(tmp / "C")
+
+    ok_ab = a == b
+    ok_c = bool(c) and all(a.get(k) == v for k, v in c.items())
+    print(f"runs: {n}")
+    print(f"sequential == process pool          : {'YES' if ok_ab else 'NO'}")
+    print(f"isolated, reversed, other hash seed : {'YES' if ok_c else 'NO'}")
+    if ok_ab and ok_c:
+        print("REPRODUCIBLE: every run's result depends only on its seed.")
+        return 0
+    for k in sorted(set(a) | set(b)):
+        if a.get(k) != b.get(k):
+            print(f"  differs: {k}: {a.get(k, (None,))[0]} vs {b.get(k, (None,))[0]}")
+    print("NOT REPRODUCIBLE -- do not launch the full experiments until this is resolved.")
+    return 1
 
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main())

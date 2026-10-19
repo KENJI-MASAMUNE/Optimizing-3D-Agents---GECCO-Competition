@@ -1,0 +1,104 @@
+# CHPC configuration: identical experiment settings to default_config.yaml; Framsticks paths come
+# from the FRAMSPY_PATH / FRAMS_DIR environment variables set in chpc/env.sh, results go to RESULTS_DIR.
+framsticks:
+  framspy_path: null
+  frams_dir: null
+  lib_name: null
+  sim_files: eval-allcriteria.sim;deterministic.sim;recording-cog-only.sim
+  base_world:
+    energy0: 2500
+  graph_dissimilarity_mode: greedy
+  eval_budget: 100000
+  time_budget_seconds: 3600
+  deterministic: true
+ga:
+  population_size: 100
+  n_generations: 300
+  crossover_prob: 0.7
+  mutation_prob: 0.3
+  tournament_size: 2
+  encodings:
+  - f0
+  - f1
+  cache_fitness: true
+smoke:
+  population_size: 6
+  n_generations: 3
+variants:
+- nsga2_baseline
+- de_nsga2_gene
+- de_nsga2_graph
+- de_nsga2_hybrid
+- adaptive_de_nsga2
+- simple_ea            # organisers' baseline (framspy FramsticksEvolution / DEAP eaSimple)
+simple_ea:             # FramsticksEvolution.py defaults; budget = same number of offspring as the GA
+  population_size: 50
+  tournament_size: 5
+  mutation_prob: 0.9
+  crossover_prob: 0.2
+hybrid_crowding:
+  gene_weight: 0.5
+adaptive:
+  tau: 0.5
+  steepness: 10.0
+tasks:
+- name: straight_line_cog
+  description: COG follows a fixed straight line (10 units along +x); fitness = 1/(1+RMSE)
+- name: sinusoidal_bounce
+  description: "COG height oscillates as c + 0.1*sin(t/100), offset c fitted; fitness = 1/(1+RMSE/0.1); stationary creature = 0.586"
+- name: velocity_forward
+  description: Maximise forward displacement of COG over the episode
+- name: jump_height
+  description: Maximise peak vertical COG displacement
+- name: comp_distance
+  description: "Organisers' example TEST_FUNCTION 3: |COG(death) - COG(birth)| (any direction)"
+- name: comp_tall_runner
+  description: "Organisers' example TEST_FUNCTION 4: distance x mean(max(0, COG z))"
+experiment:
+  n_repeats: 20
+  n_repeats_smoke: 1
+  random_seed_base: 42
+  results_dir: results
+phase2:
+  tasks:
+  - straight_line_cog
+  - jump_height
+  n_repeats: 10
+  budget_evals: 30000
+  population_sizes:
+  - 50
+  - 100
+  - 150
+  - 200
+  tournament_sizes:
+  - 2
+  - 3
+  - 5
+  population_tournament_variant: de_nsga2_gene
+  adaptive_taus:
+  - 0.25
+  - 0.5
+  - 0.75
+  adaptive_steepness:
+  - 10.0
+  hybrid_gene_weights:
+  - 0.0
+  - 0.25
+  - 0.5
+  - 0.75
+  - 1.0
+  encoding: f0
+  hybrid_encodings:
+  - f0
+  - f1
+phase3:
+  worlds_file: null
+  mode: best_per_task          # proposal: Phase 1 winner per task + NSGA-II and Simple EA controls
+  # used only with mode: all_variants
+  variants: [adaptive_de_nsga2, nsga2_baseline, de_nsga2_gene, simple_ea]
+  use_phase2_tuning: false
+  n_repeats: 20
+statistics:
+  alpha: 0.05
+  test: kruskal-wallis
+  posthoc: dunn

@@ -1,6 +1,7 @@
 # Integrating the real Framsticks / `framspy` backend
 
-Status: **implemented and internally consistent**, against the confirmed API of
+Status (updated Oct 2026): **world_config is now implemented** -- see src/framsticks_interface/worlds.py,
+configs/worlds/phase3_worlds.yaml and docs/AUDIT_2026-10.md. Original status: **implemented and internally consistent**, against the confirmed API of
 `FramsticksLib.py`, `FramsticksLibCompetition.py`, and `FramsticksEvolution.py` (all three
 uploaded by Salmaan). `RealFramsticksInterface` is now the only production backend -- there
 is no mock/fake shipped as a feature (see "No more mock backend" below). One thing remains
