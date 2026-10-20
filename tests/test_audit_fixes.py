@@ -188,10 +188,18 @@ def test_phase3_specs_need_selection_or_all_variants():
     sel = {t["name"]: {"variant": "de_nsga2_graph", "encoding": "f0"} for t in CONFIG["tasks"]}
     specs = build_phase3_specs(best, selection=sel)
     assert len(specs) == 14 * 3 * CONFIG["phase3"]["n_repeats"]  # winner + NSGA-II + Simple EA controls
-    allv = dict(CONFIG, phase3=dict(CONFIG["phase3"], mode="all_variants"))
+    allv = dict(CONFIG, phase3=dict(CONFIG["phase3"], mode="all_variants", include_best_per_task=False))
     assert len(build_phase3_specs(allv)) == 14 * len(CONFIG["phase3"]["variants"]) * 2 * CONFIG["phase3"]["n_repeats"]
-    allv5 = dict(CONFIG, phase3={k: v for k, v in CONFIG["phase3"].items() if k != "variants"} | {"mode": "all_variants"})
+    allv5 = dict(CONFIG, phase3={k: v for k, v in CONFIG["phase3"].items() if k != "variants"} | {"mode": "all_variants", "include_best_per_task": False})
     assert len(build_phase3_specs(allv5)) == 14 * len(CONFIG["variants"]) * 2 * CONFIG["phase3"]["n_repeats"]
+    side = dict(CONFIG, phase3=dict(CONFIG["phase3"], mode="all_variants", include_best_per_task=True))
+    with pytest.raises(ValueError):
+        build_phase3_specs(side, selection=None)
+    side_specs = build_phase3_specs(side, selection=sel)
+    # graph crowding is not in the submission list, so each setting gains that one winner
+    assert len(side_specs) == 14 * (len(CONFIG["phase3"]["variants"]) * 2 + 1) * CONFIG["phase3"]["n_repeats"]
+    assert len({s.run_id for s in side_specs}) == len(side_specs)
+    assert any(s.variant == "de_nsga2_graph" for s in side_specs)
 
 
 def test_run_spec_reproducible_and_writes_json(tmp_path):
