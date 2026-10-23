@@ -1,0 +1,2488 @@
+{
+  "n_runs": 1440,
+  "vs_simple_ea": {
+    "comp_distance__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 49.09506156931479,
+        "simple_ea_mean": 45.829505453480294,
+        "U": 213.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 44.580711576105266,
+        "simple_ea_mean": 45.829505453480294,
+        "U": 178.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 53.396497716240084,
+        "simple_ea_mean": 45.829505453480294,
+        "U": 239.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 45.59216933132275,
+        "simple_ea_mean": 45.829505453480294,
+        "U": 198.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 39.028929389173136,
+        "simple_ea_mean": 45.829505453480294,
+        "U": 156.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      }
+    },
+    "comp_distance__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 53.16076627747545,
+        "simple_ea_mean": 23.973606606984813,
+        "U": 344.0,
+        "p_bonferroni": 0.0005186700363080665,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_gene": {
+        "mean": 53.839869330432954,
+        "simple_ea_mean": 23.973606606984813,
+        "U": 344.0,
+        "p_bonferroni": 0.0005186700363080665,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_graph": {
+        "mean": 36.10461789487289,
+        "simple_ea_mean": 23.973606606984813,
+        "U": 294.0,
+        "p_bonferroni": 0.057164146542200464,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 38.629131710697536,
+        "simple_ea_mean": 23.973606606984813,
+        "U": 308.0,
+        "p_bonferroni": 0.01819413112312375,
+        "better": true,
+        "significant": true
+      },
+      "nsga2_baseline": {
+        "mean": 47.00922986803754,
+        "simple_ea_mean": 23.973606606984813,
+        "U": 333.0,
+        "p_bonferroni": 0.0016909740501466891,
+        "better": true,
+        "significant": true
+      }
+    },
+    "comp_tall_runner__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 20.645027676665002,
+        "simple_ea_mean": 18.025363582483614,
+        "U": 196.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 18.390695157083893,
+        "simple_ea_mean": 18.025363582483614,
+        "U": 200.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 28.5279681545881,
+        "simple_ea_mean": 18.025363582483614,
+        "U": 282.0,
+        "p_bonferroni": 0.13741710987810776,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 23.88375400470715,
+        "simple_ea_mean": 18.025363582483614,
+        "U": 236.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 17.877346649990216,
+        "simple_ea_mean": 18.025363582483614,
+        "U": 200.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      }
+    },
+    "comp_tall_runner__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 20.53168726939157,
+        "simple_ea_mean": 9.206832932927167,
+        "U": 336.0,
+        "p_bonferroni": 0.0012353065066114757,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_gene": {
+        "mean": 15.693817869152548,
+        "simple_ea_mean": 9.206832932927167,
+        "U": 316.0,
+        "p_bonferroni": 0.008911877687527206,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_graph": {
+        "mean": 9.82681153262481,
+        "simple_ea_mean": 9.206832932927167,
+        "U": 254.0,
+        "p_bonferroni": 0.7392329135718094,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 14.17444787052861,
+        "simple_ea_mean": 9.206832932927167,
+        "U": 280.0,
+        "p_bonferroni": 0.15758551037280785,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 16.135855713360844,
+        "simple_ea_mean": 9.206832932927167,
+        "U": 313.0,
+        "p_bonferroni": 0.011706363037467686,
+        "better": true,
+        "significant": true
+      }
+    },
+    "jump_height__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 4.599312306323641,
+        "simple_ea_mean": 4.8107118894184415,
+        "U": 184.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 4.32836513112497,
+        "simple_ea_mean": 4.8107118894184415,
+        "U": 135.0,
+        "p_bonferroni": 0.4051587462092551,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 4.774610920642005,
+        "simple_ea_mean": 4.8107118894184415,
+        "U": 204.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 4.81845683163846,
+        "simple_ea_mean": 4.8107118894184415,
+        "U": 227.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 4.7954020596085645,
+        "simple_ea_mean": 4.8107118894184415,
+        "U": 199.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      }
+    },
+    "jump_height__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 3.714313357575121,
+        "simple_ea_mean": 2.0480982619820374,
+        "U": 339.0,
+        "p_bonferroni": 0.0008968189264473124,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_gene": {
+        "mean": 3.557889861831061,
+        "simple_ea_mean": 2.0480982619820374,
+        "U": 337.0,
+        "p_bonferroni": 0.0011110131006840324,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_graph": {
+        "mean": 2.477972025496848,
+        "simple_ea_mean": 2.0480982619820374,
+        "U": 258.0,
+        "p_bonferroni": 0.5992778297962383,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 3.022632527963637,
+        "simple_ea_mean": 2.0480982619820374,
+        "U": 298.0,
+        "p_bonferroni": 0.04177413667822258,
+        "better": true,
+        "significant": true
+      },
+      "nsga2_baseline": {
+        "mean": 3.550456737361995,
+        "simple_ea_mean": 2.0480982619820374,
+        "U": 336.0,
+        "p_bonferroni": 0.0012353065066114757,
+        "better": true,
+        "significant": true
+      }
+    },
+    "sinusoidal_bounce__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 0.6209880361806869,
+        "simple_ea_mean": 0.6224311845987305,
+        "U": 213.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 0.6108044834252505,
+        "simple_ea_mean": 0.6224311845987305,
+        "U": 185.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 0.6106125721157011,
+        "simple_ea_mean": 0.6224311845987305,
+        "U": 197.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 0.6175673890424005,
+        "simple_ea_mean": 0.6224311845987305,
+        "U": 202.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 0.6157799108943853,
+        "simple_ea_mean": 0.6224311845987305,
+        "U": 179.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      }
+    },
+    "sinusoidal_bounce__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 0.616794458577525,
+        "simple_ea_mean": 0.6133840851659136,
+        "U": 236.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 0.6308881659229579,
+        "simple_ea_mean": 0.6133840851659136,
+        "U": 285.0,
+        "p_bonferroni": 0.11134955654906568,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 0.6098554415038582,
+        "simple_ea_mean": 0.6133840851659136,
+        "U": 229.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 0.60673676010886,
+        "simple_ea_mean": 0.6133840851659136,
+        "U": 195.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 0.621833190958015,
+        "simple_ea_mean": 0.6133840851659136,
+        "U": 242.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      }
+    },
+    "straight_line_cog__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 0.654312464994694,
+        "simple_ea_mean": 0.5844902735748567,
+        "U": 227.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 0.6309841274929376,
+        "simple_ea_mean": 0.5844902735748567,
+        "U": 223.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 0.6305486019302515,
+        "simple_ea_mean": 0.5844902735748567,
+        "U": 225.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 0.6217389617697432,
+        "simple_ea_mean": 0.5844902735748567,
+        "U": 218.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 0.6471854567345832,
+        "simple_ea_mean": 0.5844902735748567,
+        "U": 226.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      }
+    },
+    "straight_line_cog__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 0.7886222755732194,
+        "simple_ea_mean": 0.4897116916035496,
+        "U": 343.0,
+        "p_bonferroni": 0.0005795057073386001,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_gene": {
+        "mean": 0.7315906992297123,
+        "simple_ea_mean": 0.4897116916035496,
+        "U": 305.0,
+        "p_bonferroni": 0.02351266381694946,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_graph": {
+        "mean": 0.5713409071921189,
+        "simple_ea_mean": 0.4897116916035496,
+        "U": 232.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 0.6711904170012748,
+        "simple_ea_mean": 0.4897116916035496,
+        "U": 276.0,
+        "p_bonferroni": 0.2056179703023743,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 0.7424312824551894,
+        "simple_ea_mean": 0.4897116916035496,
+        "U": 308.0,
+        "p_bonferroni": 0.01819413112312375,
+        "better": true,
+        "significant": true
+      }
+    },
+    "velocity_forward__f0": {
+      "adaptive_de_nsga2": {
+        "mean": 20.19539348039816,
+        "simple_ea_mean": 33.60761758819063,
+        "U": 137.0,
+        "p_bonferroni": 0.45453691625313236,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_gene": {
+        "mean": 19.279134399438696,
+        "simple_ea_mean": 33.60761758819063,
+        "U": 127.0,
+        "p_bonferroni": 0.24931845105270245,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 28.095376565456796,
+        "simple_ea_mean": 33.60761758819063,
+        "U": 185.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 21.85329145789205,
+        "simple_ea_mean": 33.60761758819063,
+        "U": 148.0,
+        "p_bonferroni": 0.8179786280556595,
+        "better": false,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 25.88308221342566,
+        "simple_ea_mean": 33.60761758819063,
+        "U": 173.0,
+        "p_bonferroni": 1.0,
+        "better": false,
+        "significant": false
+      }
+    },
+    "velocity_forward__f1": {
+      "adaptive_de_nsga2": {
+        "mean": 32.17934967234025,
+        "simple_ea_mean": 16.986782441889392,
+        "U": 320.0,
+        "p_bonferroni": 0.006135915169981945,
+        "better": true,
+        "significant": true
+      },
+      "de_nsga2_gene": {
+        "mean": 28.72193758120514,
+        "simple_ea_mean": 16.986782441889392,
+        "U": 288.0,
+        "p_bonferroni": 0.08969306435162336,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_graph": {
+        "mean": 21.156383612740953,
+        "simple_ea_mean": 16.986782441889392,
+        "U": 244.0,
+        "p_bonferroni": 1.0,
+        "better": true,
+        "significant": false
+      },
+      "de_nsga2_hybrid": {
+        "mean": 24.15803778008079,
+        "simple_ea_mean": 16.986782441889392,
+        "U": 254.0,
+        "p_bonferroni": 0.7392329135718094,
+        "better": true,
+        "significant": false
+      },
+      "nsga2_baseline": {
+        "mean": 36.574575780239776,
+        "simple_ea_mean": 16.986782441889392,
+        "U": 339.0,
+        "p_bonferroni": 0.0008968189264473124,
+        "better": true,
+        "significant": true
+      }
+    }
+  },
+  "variant_tests": {
+    "comp_distance__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 6.667128712871261,
+        "p": 0.15455983500392553,
+        "significant": false
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 2.08883168316828,
+        "p": 0.7194244620214503,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 0.9410370210002115,
+        "p": 0.9186009768566338,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 7.166019801980212,
+        "p": 0.12737065051695382,
+        "significant": false
+      }
+    },
+    "comp_distance__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 20.836633663366342,
+        "p": 0.0003411807965284239,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.014861465918868425,
+            "de_nsga2_hybrid": 0.09480565234816185,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.002552053280618134,
+            "de_nsga2_hybrid": 0.021133383132062134,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.014861465918868425,
+            "de_nsga2_gene": 0.002552053280618134,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.11444669828809358
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.09480565234816185,
+            "de_nsga2_gene": 0.021133383132062134,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.5169494505113836
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.11444669828809358,
+            "de_nsga2_hybrid": 0.5169494505113836,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 6.2698217821781554,
+        "p": 0.17988363438907823,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 14.694927807422033,
+        "p": 0.005377637459982314,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.20617102760337427,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.003256298056895356,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.21223123349198597,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.20617102760337427,
+            "de_nsga2_gene": 0.003256298056895356,
+            "de_nsga2_graph": 0.21223123349198597,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.03302652224050953
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.03302652224050953,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 5.083603960396033,
+        "p": 0.27882627855207215,
+        "significant": false
+      }
+    },
+    "comp_tall_runner__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 7.909544554455465,
+        "p": 0.09494845926301863,
+        "significant": false
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.9540831328120816,
+        "p": 0.4122556872700438,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 2.872452015934316,
+        "p": 0.5793920677990968,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.546772277227717,
+        "p": 0.47080224634821666,
+        "significant": false
+      }
+    },
+    "comp_tall_runner__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 12.120356435643544,
+        "p": 0.01647834930057341,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.009031575586356222,
+            "de_nsga2_hybrid": 0.2544902990511091,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.34930195367331096,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.009031575586356222,
+            "de_nsga2_gene": 0.34930195367331096,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.7209555436969435
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.2544902990511091,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.7209555436969435,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 5.62818228732246,
+        "p": 0.22868980897012078,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 5.2401736470701294,
+        "p": 0.26352980285483596,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 13.044594059405938,
+        "p": 0.011059942494586866,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.3785083201610753
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.9322743493512797,
+            "nsga2_baseline": 0.8503082590373796
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.0709565469153943
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.9322743493512797,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.00671823492191849
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.3785083201610753,
+            "de_nsga2_gene": 0.8503082590373796,
+            "de_nsga2_graph": 0.0709565469153943,
+            "de_nsga2_hybrid": 0.00671823492191849,
+            "nsga2_baseline": 1.0
+          }
+        }
+      }
+    },
+    "jump_height__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 9.385544554455464,
+        "p": 0.052152929295072925,
+        "significant": false
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 12.31288959831016,
+        "p": 0.015170060796828887,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.08343285293951468,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.15526987407721787,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.08343285293951468,
+            "de_nsga2_gene": 0.15526987407721787,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.01096129468237096,
+            "nsga2_baseline": 0.36852752794955157
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.01096129468237096,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.36852752794955157,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 16.889452849628526,
+        "p": 0.002030912886232131,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.0048849973390398226,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.019401886826749235,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.0048849973390398226,
+            "de_nsga2_gene": 0.019401886826749235,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.006483734932828448,
+            "nsga2_baseline": 0.06922081033391037
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.006483734932828448,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.06922081033391037,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.622930693069293,
+        "p": 0.4594342106105428,
+        "significant": false
+      }
+    },
+    "jump_height__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 16.37845544554449,
+        "p": 0.0025511888201912697,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.00335623764612969,
+            "de_nsga2_hybrid": 0.4151832711363241,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.056293919218868574,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.00335623764612969,
+            "de_nsga2_gene": 0.056293919218868574,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.0248819022176186
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.4151832711363241,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.0248819022176186,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.838217821782166,
+        "p": 0.42834321151375787,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 9.294676401548635,
+        "p": 0.054141522073471206,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 8.749804979327816,
+        "p": 0.06766663495373273,
+        "significant": false
+      }
+    },
+    "sinusoidal_bounce__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 1.6449504950494998,
+        "p": 0.8006914242143678,
+        "significant": false
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 7.183722772277179,
+        "p": 0.12649203799804146,
+        "significant": false
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.6445515004746105,
+        "p": 0.45624187288021,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 6.706217821782218,
+        "p": 0.15225194020866453,
+        "significant": false
+      }
+    },
+    "sinusoidal_bounce__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 14.717940594059428,
+        "p": 0.005323442769907377,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.9537267322651856,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.3446262567263347,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 0.9537267322651856,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.22078299510894986,
+            "de_nsga2_hybrid": 0.00155367233736487,
+            "nsga2_baseline": 0.638802560462588
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.22078299510894986,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.3446262567263347,
+            "de_nsga2_gene": 0.00155367233736487,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.5369173472751534
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.638802560462588,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.5369173472751534,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 35.15269608578505,
+        "p": 4.3216478185470903e-07,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 2.393309583249709e-07,
+            "de_nsga2_hybrid": 0.04041473057438831,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.0008227732925183803,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 2.393309583249709e-07,
+            "de_nsga2_gene": 0.0008227732925183803,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.068108368659367,
+            "nsga2_baseline": 0.000328223163112291
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.04041473057438831,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.068108368659367,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.000328223163112291,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 9.179720045892092,
+        "p": 0.05676100182169761,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 12.603923539436371,
+        "p": 0.013382348425414695,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.28654640024502365,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.31122337880733114,
+            "de_nsga2_hybrid": 0.0062638956223679005,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.31122337880733114,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.28654640024502365,
+            "de_nsga2_gene": 0.0062638956223679005,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.5716115789910516
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.5716115789910516,
+            "nsga2_baseline": 1.0
+          }
+        }
+      }
+    },
+    "straight_line_cog__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 0.9062970297029551,
+        "p": 0.9236556749711079,
+        "significant": false
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 12.560734902309067,
+        "p": 0.01363403394708692,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.5335310169681196,
+            "nsga2_baseline": 0.9375811009333302
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.30280240734863617,
+            "nsga2_baseline": 0.5610082812978768
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.04147237063996301,
+            "nsga2_baseline": 0.0903871544325009
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.5335310169681196,
+            "de_nsga2_gene": 0.30280240734863617,
+            "de_nsga2_graph": 0.04147237063996301,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.9375811009333302,
+            "de_nsga2_gene": 0.5610082812978768,
+            "de_nsga2_graph": 0.0903871544325009,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 10.74009492226716,
+        "p": 0.02964563028824331,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.2814553998927333,
+            "nsga2_baseline": 0.8483922817351114
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.3677679667479553,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.08992223540252114,
+            "nsga2_baseline": 0.3232483581100479
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.2814553998927333,
+            "de_nsga2_gene": 0.3677679667479553,
+            "de_nsga2_graph": 0.08992223540252114,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.8483922817351114,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.3232483581100479,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 5.781688158944864,
+        "p": 0.21605593243306423,
+        "significant": false
+      }
+    },
+    "straight_line_cog__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 29.350455445544583,
+        "p": 6.635038360959463e-06,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.3991125035124834,
+            "de_nsga2_graph": 1.9999614891355387e-06,
+            "de_nsga2_hybrid": 0.016018208785014237,
+            "nsga2_baseline": 0.7651680722825516
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 0.3991125035124834,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.01662714914689033,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.9999614891355387e-06,
+            "de_nsga2_gene": 0.01662714914689033,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.40976651748370674,
+            "nsga2_baseline": 0.006078727091359948
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.016018208785014237,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.40976651748370674,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.7651680722825516,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.006078727091359948,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 12.415485148514847,
+        "p": 0.014514795528971175,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.33091871621812213,
+            "de_nsga2_hybrid": 0.8211152506351371,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.11268185162323024,
+            "de_nsga2_hybrid": 0.322041895397484,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.33091871621812213,
+            "de_nsga2_gene": 0.11268185162323024,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.08616138652724509
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.8211152506351371,
+            "de_nsga2_gene": 0.322041895397484,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.2544902990511091
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.08616138652724509,
+            "de_nsga2_hybrid": 0.2544902990511091,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 2.5993026906647883,
+        "p": 0.6269466542724551,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 9.827762376237615,
+        "p": 0.04343112813535653,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.0709565469153943,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.2580940417182025
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.0709565469153943,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.42066053434818484,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.42066053434818484,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.2580940417182025,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      }
+    },
+    "velocity_forward__f0": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 10.410653465346513,
+        "p": 0.03405022429956696,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.28065657930517723,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.5301910097351846
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.10922450190502206,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.22396927617927143
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.28065657930517723,
+            "de_nsga2_gene": 0.10922450190502206,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.5301910097351846,
+            "de_nsga2_gene": 0.22396927617927143,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 14.824277227722746,
+        "p": 0.005079904188776491,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.34930195367331096,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.23376914892751066,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.34930195367331096,
+            "de_nsga2_gene": 0.23376914892751066,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.06324377884277992,
+            "nsga2_baseline": 0.0020605145348415663
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.06324377884277992,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.0020605145348415663,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 16.258959407061266,
+        "p": 0.002690653984202171,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.32573697918571565,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.8401430087350501
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.3983942630068405,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.7033558690003141
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.32573697918571565,
+            "de_nsga2_gene": 0.3983942630068405,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.03712686121718198,
+            "nsga2_baseline": 0.001110194236560366
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.03712686121718198,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.8401430087350501,
+            "de_nsga2_gene": 0.7033558690003141,
+            "de_nsga2_graph": 0.001110194236560366,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 3.437940594059455,
+        "p": 0.48737713276468175,
+        "significant": false
+      }
+    },
+    "velocity_forward__f1": {
+      "best_fitness": {
+        "metric": "best_fitness",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 17.336910891089133,
+        "p": 0.0016622438454101044,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.05263936721174433,
+            "de_nsga2_hybrid": 0.20842893596081946,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.8602237585756696,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.811566823301031
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.05263936721174433,
+            "de_nsga2_gene": 0.8602237585756696,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.0053861799019973775
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 0.20842893596081946,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.028714596398815174
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.811566823301031,
+            "de_nsga2_graph": 0.0053861799019973775,
+            "de_nsga2_hybrid": 0.028714596398815174,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "gene_diversity": {
+        "metric": "gene_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 10.913982466036222,
+        "p": 0.027547932898016214,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.4548106412675817,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.011282659274236067,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 0.4548106412675817,
+            "de_nsga2_gene": 0.011282659274236067,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 0.6044259645550331,
+            "nsga2_baseline": 0.4179020314464457
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.6044259645550331,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.4179020314464457,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 1.0
+          }
+        }
+      },
+      "graph_diversity": {
+        "metric": "graph_diversity",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 7.17718623567736,
+        "p": 0.1268157984830956,
+        "significant": false
+      },
+      "convergence_evals_improvement": {
+        "metric": "convergence_evals_improvement",
+        "groups": {
+          "adaptive_de_nsga2": 20,
+          "de_nsga2_gene": 20,
+          "de_nsga2_graph": 20,
+          "de_nsga2_hybrid": 20,
+          "nsga2_baseline": 20
+        },
+        "H": 15.279445544554392,
+        "p": 0.0041553763526648215,
+        "significant": true,
+        "dunn_bonferroni": {
+          "adaptive_de_nsga2": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.5369173472751546
+          },
+          "de_nsga2_gene": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.6007198642638039,
+            "de_nsga2_hybrid": 0.04076600689401254,
+            "nsga2_baseline": 1.0
+          },
+          "de_nsga2_graph": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.6007198642638039,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.16980998416896448
+          },
+          "de_nsga2_hybrid": {
+            "adaptive_de_nsga2": 1.0,
+            "de_nsga2_gene": 0.04076600689401254,
+            "de_nsga2_graph": 1.0,
+            "de_nsga2_hybrid": 1.0,
+            "nsga2_baseline": 0.0072742929558557694
+          },
+          "nsga2_baseline": {
+            "adaptive_de_nsga2": 0.5369173472751546,
+            "de_nsga2_gene": 1.0,
+            "de_nsga2_graph": 0.16980998416896448,
+            "de_nsga2_hybrid": 0.0072742929558557694,
+            "nsga2_baseline": 1.0
+          }
+        }
+      }
+    }
+  },
+  "encoding_tests": {
+    "comp_distance__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.7968292682926972,
+      "p": 0.3720430601582373,
+      "significant": false
+    },
+    "comp_distance__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 3.3834146341463622,
+      "p": 0.0658554842382958,
+      "significant": false
+    },
+    "comp_distance__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 10.536585365853654,
+      "p": 0.0011703444685277247,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.0011703444685277223
+        },
+        "f1": {
+          "f0": 0.0011703444685277223,
+          "f1": 1.0
+        }
+      }
+    },
+    "comp_distance__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 2.8126829268292823,
+      "p": 0.09352184948628073,
+      "significant": false
+    },
+    "comp_distance__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 2.8126829268292823,
+      "p": 0.09352184948628073,
+      "significant": false
+    },
+    "comp_distance__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 10.890731707317087,
+      "p": 0.0009664664167085106,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.0009664664167085141
+        },
+        "f1": {
+          "f0": 0.0009664664167085141,
+          "f1": 1.0
+        }
+      }
+    },
+    "comp_tall_runner__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.04682926829269718,
+      "p": 0.8286754110725028,
+      "significant": false
+    },
+    "comp_tall_runner__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 2.0553658536585573,
+      "p": 0.1516708199852608,
+      "significant": false
+    },
+    "comp_tall_runner__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 23.183414634146374,
+      "p": 1.472619336586103e-06,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 1.4726193365861273e-06
+        },
+        "f1": {
+          "f0": 1.4726193365861273e-06,
+          "f1": 1.0
+        }
+      }
+    },
+    "comp_tall_runner__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 6.603658536585385,
+      "p": 0.01017694450296003,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.010176944502960129
+        },
+        "f1": {
+          "f0": 0.010176944502960129,
+          "f1": 1.0
+        }
+      }
+    },
+    "comp_tall_runner__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 1.1707317073170742,
+      "p": 0.27925094536873446,
+      "significant": false
+    },
+    "comp_tall_runner__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 12.556829268292688,
+      "p": 0.00039476098122862344,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.0003947609812286228
+        },
+        "f1": {
+          "f0": 0.0003947609812286228,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 7.027317073170764,
+      "p": 0.00802755320631535,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.008027553206315485
+        },
+        "f1": {
+          "f0": 0.008027553206315485,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 7.9141463414634075,
+      "p": 0.004904971965399712,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.00490497196539969
+        },
+        "f1": {
+          "f0": 0.00490497196539969,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 26.693414634146336,
+      "p": 2.3843274880842043e-07,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 2.384327488084186e-07
+        },
+        "f1": {
+          "f0": 2.384327488084186e-07,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 20.651707317073203,
+      "p": 5.508804169740015e-06,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 5.50880416974011e-06
+        },
+        "f1": {
+          "f0": 5.50880416974011e-06,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 18.731707317073187,
+      "p": 1.5045973945099878e-05,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 1.5045973945099929e-05
+        },
+        "f1": {
+          "f0": 1.5045973945099929e-05,
+          "f1": 1.0
+        }
+      }
+    },
+    "jump_height__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 23.971463414634144,
+      "p": 9.777418187437255e-07,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 9.777418187437204e-07
+        },
+        "f1": {
+          "f0": 9.777418187437204e-07,
+          "f1": 1.0
+        }
+      }
+    },
+    "sinusoidal_bounce__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.23707317073171907,
+      "p": 0.6263280630826004,
+      "significant": false
+    },
+    "sinusoidal_bounce__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 4.80073170731707,
+      "p": 0.02844765254397576,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.02844765254397561
+        },
+        "f1": {
+          "f0": 0.02844765254397561,
+          "f1": 1.0
+        }
+      }
+    },
+    "sinusoidal_bounce__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.4573170731707421,
+      "p": 0.4988805190741141,
+      "significant": false
+    },
+    "sinusoidal_bounce__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 4.338292682926848,
+      "p": 0.03726427324163408,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.037264273241634296
+        },
+        "f1": {
+          "f0": 0.037264273241634296,
+          "f1": 1.0
+        }
+      }
+    },
+    "sinusoidal_bounce__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.5334146341463537,
+      "p": 0.465174803618463,
+      "significant": false
+    },
+    "sinusoidal_bounce__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.9482926829268195,
+      "p": 0.3301542612343649,
+      "significant": false
+    },
+    "straight_line_cog__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 8.377317073170758,
+      "p": 0.0037993286408237984,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.0037993286408238318
+        },
+        "f1": {
+          "f0": 0.0037993286408238318,
+          "f1": 1.0
+        }
+      }
+    },
+    "straight_line_cog__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 5.040731707317093,
+      "p": 0.024758030413600446,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.024758030413600855
+        },
+        "f1": {
+          "f0": 0.024758030413600855,
+          "f1": 1.0
+        }
+      }
+    },
+    "straight_line_cog__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.9482926829268195,
+      "p": 0.3301542612343649,
+      "significant": false
+    },
+    "straight_line_cog__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 1.2299999999999898,
+      "p": 0.2674070380711144,
+      "significant": false
+    },
+    "straight_line_cog__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 2.547073170731707,
+      "p": 0.1104987840199322,
+      "significant": false
+    },
+    "straight_line_cog__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 2.9041463414634308,
+      "p": 0.08835201982318724,
+      "significant": false
+    },
+    "velocity_forward__adaptive_de_nsga2": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 10.016341463414648,
+      "p": 0.0015515736494440952,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.001551573649444104
+        },
+        "f1": {
+          "f0": 0.001551573649444104,
+          "f1": 1.0
+        }
+      }
+    },
+    "velocity_forward__de_nsga2_gene": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 5.411707317073166,
+      "p": 0.020002143817307166,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.020002143817307045
+        },
+        "f1": {
+          "f0": 0.020002143817307045,
+          "f1": 1.0
+        }
+      }
+    },
+    "velocity_forward__de_nsga2_graph": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 3.7931707317073347,
+      "p": 0.051462076083379826,
+      "significant": false
+    },
+    "velocity_forward__de_nsga2_hybrid": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 0.018292682926841053,
+      "p": 0.8924138639684466,
+      "significant": false
+    },
+    "velocity_forward__nsga2_baseline": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 4.920000000000016,
+      "p": 0.026547517115491626,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.02654751711549185
+        },
+        "f1": {
+          "f0": 0.02654751711549185,
+          "f1": 1.0
+        }
+      }
+    },
+    "velocity_forward__simple_ea": {
+      "metric": "best_fitness",
+      "groups": {
+        "f0": 20,
+        "f1": 20
+      },
+      "H": 6.19317073170734,
+      "p": 0.012824421041516362,
+      "significant": true,
+      "dunn_bonferroni": {
+        "f0": {
+          "f0": 1.0,
+          "f1": 0.012824421041516527
+        },
+        "f1": {
+          "f0": 0.012824421041516527,
+          "f1": 1.0
+        }
+      }
+    }
+  }
+}

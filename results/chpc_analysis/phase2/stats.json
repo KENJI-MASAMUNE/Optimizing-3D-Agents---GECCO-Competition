@@ -1,0 +1,201 @@
+{
+  "n_runs": 500,
+  "sweep_tests": {
+    "A_population_tournament__jump_height__f0__sweep_pop": {
+      "metric": "best_fitness",
+      "groups": {
+        "50.0": 30,
+        "100.0": 30,
+        "150.0": 30,
+        "200.0": 30
+      },
+      "H": 2.7022038567492928,
+      "p": 0.43985290190721105,
+      "significant": false
+    },
+    "A_population_tournament__jump_height__f0__sweep_tourn": {
+      "metric": "best_fitness",
+      "groups": {
+        "2.0": 40,
+        "3.0": 40,
+        "5.0": 40
+      },
+      "H": 0.9900413223140276,
+      "p": 0.6095583129861895,
+      "significant": false
+    },
+    "A_population_tournament__jump_height__f0__combined": {
+      "metric": "best_fitness",
+      "groups": {
+        "100.0|2.0": 10,
+        "100.0|3.0": 10,
+        "100.0|5.0": 10,
+        "150.0|2.0": 10,
+        "150.0|3.0": 10,
+        "150.0|5.0": 10,
+        "200.0|2.0": 10,
+        "200.0|3.0": 10,
+        "200.0|5.0": 10,
+        "50.0|2.0": 10,
+        "50.0|3.0": 10,
+        "50.0|5.0": 10
+      },
+      "H": 11.268760330578516,
+      "p": 0.4210299104805806,
+      "significant": false
+    },
+    "A_population_tournament__straight_line_cog__f0__sweep_pop": {
+      "metric": "best_fitness",
+      "groups": {
+        "50.0": 30,
+        "100.0": 30,
+        "150.0": 30,
+        "200.0": 30
+      },
+      "H": 2.2726721763085607,
+      "p": 0.5177763986463144,
+      "significant": false
+    },
+    "A_population_tournament__straight_line_cog__f0__sweep_tourn": {
+      "metric": "best_fitness",
+      "groups": {
+        "2.0": 40,
+        "3.0": 40,
+        "5.0": 40
+      },
+      "H": 3.8618595041322124,
+      "p": 0.1450133093626284,
+      "significant": false
+    },
+    "A_population_tournament__straight_line_cog__f0__combined": {
+      "metric": "best_fitness",
+      "groups": {
+        "100.0|2.0": 10,
+        "100.0|3.0": 10,
+        "100.0|5.0": 10,
+        "150.0|2.0": 10,
+        "150.0|3.0": 10,
+        "150.0|5.0": 10,
+        "200.0|2.0": 10,
+        "200.0|3.0": 10,
+        "200.0|5.0": 10,
+        "50.0|2.0": 10,
+        "50.0|3.0": 10,
+        "50.0|5.0": 10
+      },
+      "H": 10.340495867768709,
+      "p": 0.5000442975411699,
+      "significant": false
+    },
+    "B_adaptive_schedule__jump_height__f0__sweep_tau": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10
+      },
+      "H": 1.6593548387096888,
+      "p": 0.4361899700713443,
+      "significant": false
+    },
+    "B_adaptive_schedule__jump_height__f0__sweep_k": {
+      "metric": "best_fitness",
+      "groups": {
+        "10.0": 30
+      },
+      "error": "fewer than 2 groups"
+    },
+    "B_adaptive_schedule__jump_height__f0__combined": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.25|10.0": 10,
+        "0.5|10.0": 10,
+        "0.75|10.0": 10
+      },
+      "H": 1.6593548387096888,
+      "p": 0.4361899700713443,
+      "significant": false
+    },
+    "B_adaptive_schedule__straight_line_cog__f0__sweep_tau": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10
+      },
+      "H": 1.3961290322580737,
+      "p": 0.49754736736638916,
+      "significant": false
+    },
+    "B_adaptive_schedule__straight_line_cog__f0__sweep_k": {
+      "metric": "best_fitness",
+      "groups": {
+        "10.0": 30
+      },
+      "error": "fewer than 2 groups"
+    },
+    "B_adaptive_schedule__straight_line_cog__f0__combined": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.25|10.0": 10,
+        "0.5|10.0": 10,
+        "0.75|10.0": 10
+      },
+      "H": 1.3961290322580737,
+      "p": 0.49754736736638916,
+      "significant": false
+    },
+    "C_hybrid_weight__jump_height__f0__sweep_w": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.0": 10,
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10,
+        "1.0": 10
+      },
+      "H": 0.8141176470588221,
+      "p": 0.9365454387663312,
+      "significant": false
+    },
+    "C_hybrid_weight__jump_height__f1__sweep_w": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.0": 10,
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10,
+        "1.0": 10
+      },
+      "H": 6.396235294117645,
+      "p": 0.17144694797193202,
+      "significant": false
+    },
+    "C_hybrid_weight__straight_line_cog__f0__sweep_w": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.0": 10,
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10,
+        "1.0": 10
+      },
+      "H": 3.009882352941162,
+      "p": 0.5561729763034335,
+      "significant": false
+    },
+    "C_hybrid_weight__straight_line_cog__f1__sweep_w": {
+      "metric": "best_fitness",
+      "groups": {
+        "0.0": 10,
+        "0.25": 10,
+        "0.5": 10,
+        "0.75": 10,
+        "1.0": 10
+      },
+      "H": 3.8475294117646968,
+      "p": 0.42703357572208533,
+      "significant": false
+    }
+  }
+}
