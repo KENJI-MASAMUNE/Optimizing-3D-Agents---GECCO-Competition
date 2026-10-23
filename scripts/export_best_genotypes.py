@@ -21,7 +21,8 @@ from pathlib import Path
 
 SHORT = {"straight_line_cog": "line", "sinusoidal_bounce": "sine", "velocity_forward": "vel",
          "jump_height": "jump", "nsga2_baseline": "baseline", "de_nsga2_gene": "gene",
-         "de_nsga2_graph": "graph", "de_nsga2_hybrid": "hybrid", "adaptive_de_nsga2": "adaptive"}
+         "de_nsga2_graph": "graph", "de_nsga2_hybrid": "hybrid", "adaptive_de_nsga2": "adaptive",
+         "comp_distance": "dist", "comp_tall_runner": "tall", "simple_ea": "simpleEA"}
 
 
 def gen_record(name: str, genotype: str, info: str) -> str:

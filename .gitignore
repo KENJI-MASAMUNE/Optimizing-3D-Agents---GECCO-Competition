@@ -21,3 +21,6 @@ configs/local_config.yaml
 *.sim.bak
 configs/_energy0_sweep/
 claude.md
+# local transfer / cluster bundles
+chpc_bundle/
+*.tgz

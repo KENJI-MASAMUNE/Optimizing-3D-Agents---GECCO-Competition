@@ -1,15 +1,32 @@
 # DE-NSGA-II: Diversity-Enhanced Evolutionary Optimisation of 3D Agents in Framsticks
 
-**COS700 Research Proposal — GECCO 2026 Automated 3D Design Competition**
+**COS700 Honours Research Project, University of Pretoria (2026)**
 
 Group: Salmaan Patel, Vanessa Rampedi, Ntsako Sithole
 Supervisors: Prof. N. Pillay, Dr. T. Nyathi
 
-This repository implements the algorithm variants and experimental pipeline described in
-`docs/proposal.pdf`: a standard NSGA-II baseline and four Diversity-Enhancing NSGA-II
-(DE-NSGA-II) variants — Gene Crowding, Graph Crowding, Hybrid Crowding, and the novel
-**Adaptive DE-NSGA-II** — evaluated on centre-of-gravity (COG) trajectory-following tasks in
-the Framsticks simulation environment (Komosinski & Mensfelt, GECCO 2025).
+This repository implements and evaluates five evolutionary algorithms for evolving Framsticks
+agents whose centre of gravity (COG) must move in a required way, using the GECCO Automated
+Design Competition protocol as a research benchmark: standard NSGA-II and four
+Diversity-Enhancing NSGA-II (DE-NSGA-II) variants (Komosinski & Mensfelt, GECCO 2025) —
+Gene, Graph and Hybrid crowding, and the novel **Adaptive DE-NSGA-II** — plus a
+re-implementation of the organisers' **Simple EA** baseline.
+
+**Public showcase (summary, figures, poster, animation of the evolved agents):**
+https://github.com/KENJI-MASAMUNE/Optimizing-3D-Agents-Showcase
+
+## Results at a glance
+
+All three phases were run on the CHPC Lengau cluster (3,780 runs, ≈1,860 CPU-hours):
+
+| Phase | Runs | Outcome |
+|---|---|---|
+| 1. Controlled comparison (6 algorithms × f0/f1 × 6 tasks × 20 seeds) | 1440 | No DE variant significantly fitter than NSGA-II on any task; Adaptive significantly better than DE gene across tasks (Wilcoxon p = 0.034) |
+| 2. Sensitivity (population, tournament, τ, hybrid weight) | 500 | No significant effects (all p ≥ 0.145) |
+| 3. 14 competition-style worlds + 4 held-out worlds | 1840 | Adaptive f1 best general algorithm (best mean in 5/14 settings), not significantly above NSGA-II; Simple EA f0 best in 4/14; agents keep only 32–40% of fitness in unseen worlds |
+
+The full analysis is in the research report (`COS700_Research_Report.docx`, kept outside the
+repository) and summarised in the showcase repository.
 
 ## Framsticks backend
 
@@ -36,7 +53,7 @@ src/
 ├── framsticks_interface/   # OWNER: Vanessa Rampedi
 │   ├── interface.py           Abstract FramsticksInterface + RealFramsticksInterface adapter
 │   ├── competition_lib.py     Our FramsticksLibCompetition subclass (task-specific fitness)
-│   ├── task_fitness.py        The four Phase 1 fitness functions, pure numpy (framspy-free)
+│   ├── task_fitness.py        The six task fitness functions, pure numpy (framspy-free)
 │   └── encodings.py           f0 / f1 genotype helpers, random genotype generators
 │
 ├── diversity/               # OWNER: Vanessa Rampedi (with Ntsako on graph measure)
@@ -109,11 +126,14 @@ determinism validation).
 ```bash
 python scripts/check_framsticks.py --timing          # environment check on a new machine
 python scripts/verify_reproducibility.py             # results must depend only on the seed
-python -m src.experiments.cli run --phase 1 --workers 8      # 800 runs (resumable)
+python -m src.experiments.cli run --phase 1 --workers 8      # 1440 runs (resumable)
 python -m src.experiments.cli run --phase 2 --workers 8      # 500 runs (can run alongside Phase 1)
-python -m src.experiments.cli phase3-select                  # freeze Phase 1 winners + Phase 2 tuning
-python -m src.experiments.cli run --phase 3 --workers 8      # 10 reconstructed competition settings
-python -m src.experiments.cli aggregate --phase 1            # CSVs + Kruskal-Wallis / Dunn
+python -m src.experiments.cli phase3-select                  # freeze the Phase 1 winners
+python -m src.experiments.cli run --phase 3 --workers 8      # 1840 runs: 14 settings + 4 held-out worlds
+python -m src.experiments.cli aggregate --phase 1            # CSVs, Kruskal-Wallis / Dunn, vs Simple EA
+python -m src.experiments.cli best-diversity --phase 1       # diversity of the 20 best solutions
+python scripts/export_best_genotypes.py results/analysis/phase1/runs.csv best_phase1.gen   # for the Framsticks GUI
+python scripts/render_best_agents.py results/analysis/phase1/runs.csv best_agents.gif      # animation of the best agents
 ```
 
 On the CHPC: `bash chpc/setup_env.sh`, then `bash chpc/submit.sh smoke|1|2|3`.
@@ -134,10 +154,10 @@ test (written to `results/smoke/`).
 
 - [x] Repository scaffold, RealFramsticksInterface adapter, f0/f1 encodings
 - [x] Gene (Levenshtein) and graph (Framsticks SimilMeasure) dissimilarity, with a graph-distance cache
-- [x] Variants 1-5 (Variant 4 corrected to the proposal's gene/graph blend; tournament size honoured)
-- [x] Evaluation metrics + statistics module (Kruskal-Wallis + Dunn, normalised score, generalisation)
+- [x] Variants 1-5 and the organisers' Simple EA baseline
+- [x] Evaluation metrics + statistics (Kruskal-Wallis + Dunn, Mann-Whitney vs Simple EA, competition score, generalisation, best-20 diversity)
 - [x] Reproducibility: every run depends only on its seed (incl. native Gaussian-cache fix)
-- [x] Phase 3 world configurations (configs/worlds/phase3_worlds.yaml) wired into the simulator
+- [x] Phase 3 world configurations (14 settings + 4 held-out worlds) wired into the simulator
 - [x] Manifest-based runner + CHPC PBS job arrays (chpc/)
-- [ ] Phase 1-3 experiment execution on the CHPC
-- [ ] Report write-up
+- [x] Phase 1-3 experiments executed on the CHPC (October 2026)
+- [x] Research report and poster (Poster Day, 29 October 2026)

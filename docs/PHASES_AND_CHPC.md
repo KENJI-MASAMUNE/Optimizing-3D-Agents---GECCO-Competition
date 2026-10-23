@@ -4,9 +4,9 @@
 
 | Phase | Question it answers | Runs (default config) | Depends on |
 |---|---|---|---|
-| 1 — Controlled experiments | With standard ("out-of-the-box") settings, which variant × encoding works best on each task? | 6 algorithms (5 variants + Simple EA) × 2 encodings × 6 tasks × 20 repeats = **1440** (800 already done) | nothing |
-| 2 — Sensitivity analysis | Are the Phase 1 conclusions robust to the GA settings, and what are good values for the knobs only some variants have? | **500** (3 sweeps, 2 tasks, 10 repeats) | nothing |
-| 3 — Competition-style evaluation | Does each task's Phase 1 winner still beat NSGA-II and the Simple EA in new worlds, and how well do its agents generalise to worlds never seen during optimisation? | 14 settings × (winner + NSGA-II + Simple EA) × 20 = **≤ 840** | Phase 1 (`phase3-select`) |
+| 1 — Controlled experiments | With standard ("out-of-the-box") settings, which variant × encoding works best on each task? | 6 algorithms (5 variants + Simple EA) × 2 encodings × 6 tasks × 20 repeats = **1440** (completed) | nothing |
+| 2 — Sensitivity analysis | Are the Phase 1 conclusions robust to the GA settings, and what are good values for the knobs only some variants have? | **500** (3 sweeps, 2 tasks, 10 repeats; completed) | nothing |
+| 3 — Competition-style evaluation | Do Adaptive DE-NSGA-II and each task's Phase 1 winner still beat NSGA-II and the Simple EA in new worlds, and how well do their agents generalise to worlds never seen during optimisation? | 14 settings × (Adaptive, NSGA-II, Simple EA) × 2 encodings × 20 + Phase 1 winners on their own task's settings = **1840** (completed) | Phase 1 (`phase3-select`) |
 
 ### The organisers' Simple EA baseline
 
@@ -32,14 +32,22 @@ but sideways, backwards or vertical movement only counts for comp_distance. They
 our Phase 1 settings (Energy0 2500, ~20k evaluations), so their values are not comparable
 with published competition numbers. Phase 2 keeps its two tasks.
 
-### Phase 3 (proposal design)
+### Phase 3 (final design, as run in October 2026)
 
-`phase3.mode: best_per_task`: for each task, `phase3-select` freezes the Phase 1 winner
-(variant + encoding, highest mean best fitness; the Simple EA is never selected). Each of the
-14 settings then runs that winner, the NSGA-II baseline (proposal's control) and the Simple EA
-(competition zero point), all with the winner's encoding. Phase 2 tuning is not applied
-(`use_phase2_tuning: false`). `configs/worlds/phase3_worlds.yaml` has 14 settings: the 10
-original ones plus S11–S14 for comp_distance and comp_tall_runner.
+`phase3.mode: all_variants` with `variants: [adaptive_de_nsga2, nsga2_baseline, simple_ea]`
+and `include_best_per_task: true`. In every one of the 14 settings, Adaptive DE-NSGA-II,
+NSGA-II and the Simple EA run with **both** encodings (14 × 3 × 2 × 20 = 1680 runs), so the
+novel variant is tested in every world. `phase3-select` also freezes each task's Phase 1
+winner (highest mean best fitness; the Simple EA is never selected) and adds it to that
+task's settings when it is not already one of the three (DE gene f1 on the sinusoid and
+distance settings, DE graph f0 on tall runner, DE hybrid f0 on jump: 160 runs). Total
+**1840 runs**. Phase 2 tuning is **not** applied (`use_phase2_tuning: false`): the tuned
+hybrid weight (w = 1) would turn the hybrid jump winner into gene crowding.
+`configs/worlds/phase3_worlds.yaml` has the 14 settings (the original 10 plus S11–S14 for
+comp_distance and comp_tall_runner) and the 4 held-out worlds.
+
+The proposal's original design (`mode: best_per_task`: winner + NSGA-II + Simple EA in the
+winner's encoding only) is still available in the code.
 
 ### Why Phase 2 exists
 
@@ -162,7 +170,7 @@ process or node runs it.
    (640 new runs; the 800 finished ones are skipped), then
    `python -m src.experiments.cli aggregate --phase 1`.
 7. **Phase 3:** `python -m src.experiments.cli phase3-select` (check the six printed winners),
-   then `bash chpc/submit.sh 3 9 24:00:00`.
+   then `bash chpc/submit.sh 3 4 24:00:00`.
 8. **Analyse:** `python -m src.experiments.cli aggregate --phase N` for N = 1, 2, 3, then
    `python -m src.experiments.cli best-diversity --phase 1` (and `--phase 3`): Komosinski &
    Mensfelt's diversity test on the 20 best solutions per setup, written to
@@ -200,12 +208,11 @@ the fitness cache. Lengau's Haswell cores are probably 1.5–2× slower. Rough t
 |---|---|---|---|
 | 1 | 1440 (640 new) | 250–450 (measured: 15–35 min/run, graph/hybrid f1 ~70 min) | 7 nodes, ~5 h wall for the new runs |
 | 2 | 500 | 50–120 | 5 nodes (population 200 runs are slower) |
-| 3 (best_per_task) | ≤ 840 | 300–500 | 9 nodes |
-| 3 (all_variants, not used) | 14 × variants × 2 × 20 | — | — |
+| 3 (all_variants + winners, as run) | 1840 | ≈ 690 (measured) | 18 array elements × 23 cores, ~5–8 h wall |
 
-That's small for the CHPC, so `phase3.mode: all_variants` (all 5 variants × both encodings
-in every setting, with the competition's normalised score) is affordable and makes a
-stronger Phase 3. It is a one-line change in `configs/chpc_config.yaml`.
+Measured totals for the three phases: about 1,860 CPU-hours (Phase 1 ≈ 810, Phase 2 ≈ 350,
+Phase 3 ≈ 690). Run `best-diversity --phase 3` as a batch job, not on the login node: it
+needs about 18,000 graph comparisons and the login node kills it.
 
 ### Queue notes
 
